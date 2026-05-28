@@ -283,12 +283,17 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to bottom, rgba(8,9,15,0.38) 0%, rgba(8,9,15,0.78) 100%),
+        linear-gradient(to bottom, rgba(8,9,15,0.32) 0%, rgba(8,9,15,0.72) 100%),
         url('https://i.ibb.co/SwWhNWzm/harris-background.jpg') center/cover no-repeat;
       background-size: cover;
       background-position: center;
       transform: scale(1.06);
       transition: transform 12s linear;
+      filter: contrast(1.08) saturate(1.12) brightness(1.04);
+      image-rendering: high-quality;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      will-change: transform;
     }
     .hero-bg.loaded { transform: scale(1); }
 

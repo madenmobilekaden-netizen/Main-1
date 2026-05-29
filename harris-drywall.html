@@ -388,18 +388,16 @@
       margin-bottom: 1.4rem;
     }
 
-    .hero-contact {
-      display: flex;
-      flex-direction: column;
-      gap: 0.45rem;
-      margin-bottom: 0;
-    }
+    .hero-contact { margin-bottom: 0; }
     .hero-contact-row {
       display: flex;
       align-items: center;
-      gap: 1.4rem;
-      flex-wrap: wrap;
-      margin-bottom: 0.4rem;
+      gap: 1rem;
+    }
+    .hero-contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
     }
     .hero-contact a {
       display: flex;
@@ -408,40 +406,39 @@
       color: var(--clr-cream);
       text-decoration: none;
       font-family: var(--ff-label);
-      font-size: clamp(0.78rem, 1.1vw, 0.95rem);
+      font-size: clamp(0.78rem, 1.1vw, 0.9rem);
       font-weight: 500;
       letter-spacing: 0.03em;
       transition: color 0.2s;
     }
     .hero-contact a:hover { color: #4da6ff; }
     .contact-icon {
-      width: 22px; height: 22px;
+      width: 20px; height: 20px;
       background: rgba(61,111,171,0.35);
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       flex-shrink: 0;
     }
     .hero-fb {
       display: flex;
       align-items: center;
-      gap: 0.7rem;
-      margin-top: 0.5rem;
+      gap: 0.55rem;
       text-decoration: none;
     }
     .fb-icon {
-      width: 30px; height: 30px;
+      width: 26px; height: 26px;
       background: #1877f2;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       color: #fff;
-      font-size: 0.9rem;
+      font-size: 0.82rem;
       font-weight: 700;
       flex-shrink: 0;
     }
     .hero-fb span {
       font-family: var(--ff-label);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: var(--clr-text);
       letter-spacing: 0.02em;
       line-height: 1.3;
@@ -1280,32 +1277,34 @@
       <p class="hero-sub reveal reveal-delay-2">A one stop shop for all.</p>
 
       <div class="hero-actions reveal reveal-delay-3">
-        <div class="hero-badge">
-          <div class="hero-badge-inner">
-            <span class="badge-stars">★★★★★</span>
-            <span class="badge-line1">Best at</span>
-            <span class="badge-line2">The Lake</span>
-            <span class="badge-dash">— Finalist —</span>
-          </div>
-        </div>
         <a href="#contact" class="btn btn-primary">Schedule Estimate</a>
       </div>
 
       <div class="hero-contact reveal reveal-delay-4">
         <div class="hero-contact-row">
-          <a href="tel:5738366843">
-            <span class="contact-icon">📞</span>
-            573-836-6843
-          </a>
-          <a href="mailto:harrisgroupllc2024@gmail.com">
-            <span class="contact-icon">✉</span>
-            harrisgroupllc2024@gmail.com
-          </a>
+          <div class="hero-badge">
+            <div class="hero-badge-inner">
+              <span class="badge-stars">★★★★★</span>
+              <span class="badge-line1">Best at</span>
+              <span class="badge-line2">The Lake</span>
+              <span class="badge-dash">— Finalist —</span>
+            </div>
+          </div>
+          <div class="hero-contact-links">
+            <a href="tel:5738366843">
+              <span class="contact-icon">📞</span>
+              573-836-6843
+            </a>
+            <a href="mailto:harrisgroupllc2024@gmail.com">
+              <span class="contact-icon">✉</span>
+              harrisgroupllc2024@gmail.com
+            </a>
+            <a href="https://www.facebook.com/HarrisGroupLLC" target="_blank" rel="noopener" class="hero-fb">
+              <span class="fb-icon">f</span>
+              <span>Visit us on Facebook @ Harris Group, LLC</span>
+            </a>
+          </div>
         </div>
-        <a href="https://www.facebook.com/HarrisGroupLLC" target="_blank" rel="noopener" class="hero-fb">
-          <span class="fb-icon">f</span>
-          <span>Visit us on Facebook<br>@ Harris Group, LLC</span>
-        </a>
       </div>
     </div>
 

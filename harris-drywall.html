@@ -385,7 +385,7 @@
       gap: 1rem;
       flex-wrap: wrap;
       align-items: center;
-      margin-bottom: 1.6rem;
+      margin-bottom: 1.4rem;
     }
 
     .hero-contact {
@@ -397,8 +397,9 @@
     .hero-contact-row {
       display: flex;
       align-items: center;
-      gap: 1.2rem;
+      gap: 1.4rem;
       flex-wrap: wrap;
+      margin-bottom: 0.4rem;
     }
     .hero-contact a {
       display: flex;
@@ -456,10 +457,7 @@
       border: 2px solid #c9a84c;
       text-align: center;
       padding: 10px;
-      position: absolute;
-      bottom: 5vh;
-      left: 5vw;
-      z-index: 3;
+      flex-shrink: 0;
       box-shadow: 0 0 20px rgba(201,168,76,0.25);
     }
     .hero-badge-inner {
@@ -1282,6 +1280,14 @@
       <p class="hero-sub reveal reveal-delay-2">A one stop shop for all.</p>
 
       <div class="hero-actions reveal reveal-delay-3">
+        <div class="hero-badge">
+          <div class="hero-badge-inner">
+            <span class="badge-stars">★★★★★</span>
+            <span class="badge-line1">Best at</span>
+            <span class="badge-line2">The Lake</span>
+            <span class="badge-dash">— Finalist —</span>
+          </div>
+        </div>
         <a href="#contact" class="btn btn-primary">Schedule Estimate</a>
       </div>
 
@@ -1310,16 +1316,6 @@
         alt="Harris Group contractor"
         onerror="this.parentElement.style.display='none';"
       />
-    </div>
-
-    <!-- Best at the Lake badge -->
-    <div class="hero-badge">
-      <div class="hero-badge-inner">
-        <span class="badge-stars">★★★★★</span>
-        <span class="badge-line1">Best at</span>
-        <span class="badge-line2">The Lake</span>
-        <span class="badge-dash">— Finalist —</span>
-      </div>
     </div>
 
     <div class="hero-scroll">

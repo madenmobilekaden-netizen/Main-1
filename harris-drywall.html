@@ -1,0 +1,2117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harris Group Drywall Solutions | Expert Craftsmanship — Lake of the Ozarks, MO</title>
+  <meta name="description" content="Harris Group Drywall Solutions delivers precision drywall installation, Level 5 finishing, commercial renovation, and expert craftsmanship across Lake of the Ozarks and Mid-Missouri." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       DESIGN TOKENS — Harris Group Navy/Blue Brand
+    ============================================================ */
+    :root {
+      --clr-bg:        #060810;
+      --clr-surface:   #0b0e18;
+      --clr-surface-2: #101520;
+      --clr-navy:      #1a2952;
+      --clr-navy-lt:   #243d7a;
+      --clr-blue:      #3d6fab;
+      --clr-blue-lt:   #6fa3d4;
+      --clr-cream:     #e8eef8;
+      --clr-text:      #b8cce0;
+      --clr-muted:     #5a6e8a;
+      --clr-line:      rgba(61,111,171,0.2);
+
+      --ff-display: 'Cormorant Garamond', Georgia, serif;
+      --ff-body:    'Barlow', sans-serif;
+      --ff-label:   'Barlow Condensed', sans-serif;
+
+      --nav-h: 80px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --ease-in: cubic-bezier(0.55, 0, 1, 0.45);
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--clr-bg);
+      color: var(--clr-text);
+      font-family: var(--ff-body);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    img { display: block; max-width: 100%; }
+    a   { color: inherit; text-decoration: none; }
+    ul  { list-style: none; }
+
+    /* ============================================================
+       CUSTOM CURSOR
+    ============================================================ */
+    .cursor {
+      position: fixed;
+      top: 0; left: 0;
+      width: 10px; height: 10px;
+      background: var(--clr-blue);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s, width 0.3s var(--ease), height 0.3s var(--ease), background 0.3s;
+      mix-blend-mode: screen;
+    }
+    .cursor.grow {
+      width: 40px;
+      height: 40px;
+      background: rgba(74,122,173,0.3);
+    }
+
+    /* ============================================================
+       SCROLL REVEAL
+    ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+    }
+    .reveal.revealed { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ============================================================
+       TYPOGRAPHY HELPERS
+    ============================================================ */
+    .label {
+      font-family: var(--ff-label);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--clr-blue);
+    }
+
+    .display {
+      font-family: var(--ff-display);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--clr-cream);
+    }
+
+    .body-sm { font-size: 0.9rem; color: var(--clr-muted); }
+
+    /* ============================================================
+       LAYOUT
+    ============================================================ */
+    .container {
+      width: min(1280px, 100% - 4rem);
+      margin-inline: auto;
+    }
+
+    section { padding-block: 8rem; }
+
+    /* ============================================================
+       NAVIGATION
+    ============================================================ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      z-index: 900;
+      display: flex;
+      align-items: center;
+      transition: background 0.5s var(--ease), backdrop-filter 0.5s;
+    }
+    nav.scrolled {
+      background: rgba(8,9,15,0.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--clr-line);
+    }
+
+    .nav-inner {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-inline: 2.5rem;
+    }
+
+    /* Logo image in nav */
+    .nav-logo img {
+      height: 54px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 0 8px rgba(74,122,173,0.25));
+      transition: filter 0.3s;
+    }
+    .nav-logo img:hover {
+      filter: drop-shadow(0 0 14px rgba(74,122,173,0.55));
+    }
+
+    /* Fallback text logo if image fails */
+    .nav-logo-fallback {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .nav-logo-name {
+      font-family: var(--ff-display);
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: var(--clr-cream);
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+    .nav-logo-sub {
+      font-family: var(--ff-label);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--clr-blue);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    .nav-links a {
+      font-family: var(--ff-label);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--clr-muted);
+      transition: color 0.3s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0; right: 0;
+      height: 1px;
+      background: var(--clr-blue);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s var(--ease);
+    }
+    .nav-links a:hover { color: var(--clr-cream); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    .nav-cta {
+      border: 1px solid var(--clr-blue) !important;
+      color: var(--clr-blue) !important;
+      padding: 0.55rem 1.4rem !important;
+      transition: background 0.3s, color 0.3s !important;
+    }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover {
+      background: var(--clr-blue) !important;
+      color: var(--clr-bg) !important;
+    }
+
+    /* Mobile hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: none;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 26px; height: 1.5px;
+      background: var(--clr-cream);
+      transition: transform 0.35s var(--ease), opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: var(--clr-bg);
+      z-index: 850;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      transform: translateX(100%);
+      transition: transform 0.6s var(--ease);
+    }
+    .mobile-menu.open { transform: none; }
+    .mobile-menu a {
+      font-family: var(--ff-display);
+      font-size: 2.5rem;
+      color: var(--clr-cream);
+      font-weight: 300;
+      transition: color 0.3s;
+    }
+    .mobile-menu a:hover { color: var(--clr-blue); }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      position: relative;
+      height: 100svh;
+      min-height: 620px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding: 0 5vw 5vh;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right, rgba(5,8,20,0.88) 0%, rgba(5,8,20,0.5) 55%, rgba(5,8,20,0.15) 100%),
+        linear-gradient(to bottom, rgba(5,8,20,0.15) 0%, rgba(5,8,20,0.55) 100%),
+        url('https://i.ibb.co/SwWhNWzm/harris-background.jpg') center/cover no-repeat;
+      transform: scale(1.06);
+      transition: transform 12s linear;
+      filter: contrast(1.08) saturate(1.12) brightness(1.04);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      will-change: transform;
+    }
+    .hero-bg.loaded { transform: scale(1); }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: left;
+      max-width: 560px;
+      padding-bottom: 1rem;
+    }
+
+    .hero-logo {
+      margin-bottom: 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+    .hero-logo img {
+      width: clamp(48px, 6vw, 70px);
+      height: auto;
+      filter: drop-shadow(0 0 18px rgba(74,122,173,0.5));
+    }
+    .hero-logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+    .hero-logo-text .brand-top {
+      font-family: var(--ff-label);
+      font-size: clamp(0.6rem, 0.9vw, 0.72rem);
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--clr-text);
+    }
+    .hero-logo-text .brand-main {
+      font-family: var(--ff-label);
+      font-size: clamp(1rem, 1.8vw, 1.4rem);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--clr-cream);
+    }
+    .hero-logo-text .brand-sub {
+      font-family: var(--ff-label);
+      font-size: clamp(0.5rem, 0.75vw, 0.62rem);
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--clr-blue-lt);
+    }
+
+    .hero-title {
+      font-family: var(--ff-label);
+      font-size: clamp(1.8rem, 4vw, 3.4rem);
+      font-weight: 700;
+      color: var(--clr-cream);
+      line-height: 1.12;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+    }
+    .hero-title em {
+      font-style: normal;
+      color: #4da6ff;
+      display: block;
+    }
+
+    .hero-sub {
+      font-family: var(--ff-body);
+      font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+      font-style: italic;
+      color: var(--clr-cream);
+      margin-bottom: 1.8rem;
+      line-height: 1.6;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      margin-bottom: 0;
+    }
+    .hero-contact-row {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+    .hero-contact a {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      color: var(--clr-cream);
+      text-decoration: none;
+      font-family: var(--ff-label);
+      font-size: clamp(0.78rem, 1.1vw, 0.95rem);
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    .hero-contact a:hover { color: #4da6ff; }
+    .contact-icon {
+      width: 22px; height: 22px;
+      background: rgba(61,111,171,0.35);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem;
+      flex-shrink: 0;
+    }
+    .hero-fb {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-top: 0.5rem;
+      text-decoration: none;
+    }
+    .fb-icon {
+      width: 30px; height: 30px;
+      background: #1877f2;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .hero-fb span {
+      font-family: var(--ff-label);
+      font-size: 0.75rem;
+      color: var(--clr-text);
+      letter-spacing: 0.02em;
+      line-height: 1.3;
+    }
+
+    .hero-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 86px; height: 86px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #1e2f5c 0%, #0d1730 100%);
+      border: 2px solid #c9a84c;
+      text-align: center;
+      padding: 10px;
+      position: absolute;
+      bottom: 5vh;
+      left: 5vw;
+      z-index: 3;
+      box-shadow: 0 0 20px rgba(201,168,76,0.25);
+    }
+    .hero-badge-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1.25;
+    }
+    .badge-stars { color: #c9a84c; font-size: 0.45rem; letter-spacing: 1px; margin-bottom: 1px; }
+    .badge-line1 { font-family: var(--ff-label); font-size: 0.42rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c9a84c; }
+    .badge-line2 { font-family: var(--ff-label); font-size: 0.58rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--clr-cream); }
+    .badge-dash  { font-family: var(--ff-label); font-size: 0.4rem; letter-spacing: 0.15em; text-transform: uppercase; color: #c9a84c; }
+    .badge-line3 { font-family: var(--ff-label); font-size: 0.44rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #c9a84c; }
+
+    .hero-person {
+      position: relative;
+      z-index: 2;
+      align-self: flex-end;
+      width: clamp(240px, 30vw, 420px);
+      flex-shrink: 0;
+      pointer-events: none;
+    }
+    .hero-person img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      object-position: bottom;
+      filter: drop-shadow(-10px 0 40px rgba(0,0,0,0.7));
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0.4;
+      z-index: 3;
+    }
+    .hero-scroll span {
+      font-family: var(--ff-label);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--clr-blue), transparent);
+      animation: scrollPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { transform: scaleY(0); transform-origin: top; }
+      50%       { transform: scaleY(1); transform-origin: top; }
+    }
+
+    @media (max-width: 768px) {
+      .hero { padding: 0 5vw 10vw; }
+      .hero-person { display: none; }
+      .hero-badge { width: 68px; height: 68px; }
+      .hero-title { font-size: clamp(1.6rem, 7vw, 2.4rem); }
+    }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--ff-label);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.9rem 2.2rem;
+      border: 1px solid;
+      transition: background 0.35s var(--ease), color 0.35s var(--ease), transform 0.2s;
+      cursor: none;
+    }
+    .btn:active { transform: scale(0.97); }
+
+    .btn-primary {
+      background: var(--clr-navy-lt);
+      border-color: var(--clr-navy-lt);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: var(--clr-blue);
+      border-color: var(--clr-blue);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border-color: rgba(74,122,173,0.45);
+      color: var(--clr-cream);
+    }
+    .btn-outline:hover {
+      background: rgba(74,122,173,0.1);
+      border-color: var(--clr-blue);
+    }
+
+    .btn-arrow::after {
+      content: '→';
+      transition: transform 0.3s var(--ease);
+    }
+    .btn-arrow:hover::after { transform: translateX(5px); }
+
+    /* ============================================================
+       STATS BAR
+    ============================================================ */
+    .stats-bar {
+      padding-block: 5rem;
+      border-top: 1px solid var(--clr-line);
+      border-bottom: 1px solid var(--clr-line);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+
+    .stat-item {
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+    }
+    .stat-item + .stat-item::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 20%; bottom: 20%;
+      width: 1px;
+      background: var(--clr-line);
+    }
+
+    .stat-number {
+      font-family: var(--ff-display);
+      font-size: clamp(2.8rem, 4vw, 4rem);
+      font-weight: 300;
+      color: var(--clr-cream);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .stat-number sup {
+      font-size: 0.5em;
+      vertical-align: super;
+      color: var(--clr-blue);
+    }
+    .stat-label {
+      font-family: var(--ff-label);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--clr-muted);
+    }
+
+    /* ============================================================
+       SERVICES
+    ============================================================ */
+    .services { background: var(--clr-surface); }
+
+    .section-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: end;
+      margin-bottom: 5rem;
+    }
+    .section-header .display { font-size: clamp(2.4rem, 4vw, 3.6rem); }
+    .section-header p { color: var(--clr-muted); max-width: 420px; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+    }
+
+    .service-card {
+      background: var(--clr-surface-2);
+      padding: 2.8rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.4s;
+      cursor: none;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--clr-navy), var(--clr-blue));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.45s var(--ease);
+    }
+    .service-card:hover { background: #181d2a; }
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-num {
+      font-family: var(--ff-display);
+      font-size: 4rem;
+      font-weight: 300;
+      color: rgba(74,122,173,0.1);
+      line-height: 1;
+      margin-bottom: 1.2rem;
+    }
+    .service-icon {
+      width: 40px; height: 40px;
+      margin-bottom: 1.2rem;
+      color: var(--clr-blue);
+    }
+    .service-title {
+      font-family: var(--ff-display);
+      font-size: 1.55rem;
+      font-weight: 400;
+      color: var(--clr-cream);
+      margin-bottom: 0.8rem;
+      line-height: 1.2;
+    }
+    .service-desc {
+      font-size: 0.88rem;
+      color: var(--clr-muted);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+    .service-link {
+      font-family: var(--ff-label);
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--clr-blue);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: gap 0.3s;
+    }
+    .service-link:hover { gap: 0.8rem; }
+
+    /* ============================================================
+       ABOUT / STORY SPLIT
+    ============================================================ */
+    .about { overflow: hidden; }
+
+    .about-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .about-img-wrap { position: relative; }
+    .about-img-main {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      background: var(--clr-surface-2);
+    }
+    .about-img-wrap::before {
+      content: '';
+      position: absolute;
+      top: -1.5rem; right: -1.5rem;
+      width: 60%; height: 60%;
+      border: 1px solid var(--clr-blue);
+      z-index: -1;
+      opacity: 0.3;
+    }
+    .about-badge {
+      position: absolute;
+      bottom: -1.5rem; left: -1.5rem;
+      background: var(--clr-navy-lt);
+      color: #fff;
+      padding: 2rem;
+      min-width: 180px;
+    }
+    .about-badge-num {
+      font-family: var(--ff-display);
+      font-size: 3.2rem;
+      font-weight: 300;
+      line-height: 1;
+    }
+    .about-badge-text {
+      font-family: var(--ff-label);
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .about-content .label { margin-bottom: 1.2rem; display: block; }
+    .about-content .display { font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 1.8rem; }
+    .about-content p { color: var(--clr-muted); margin-bottom: 1.2rem; font-size: 0.95rem; }
+    .about-content .btn { margin-top: 1rem; }
+
+    .values-list {
+      margin-top: 2.2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .value-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .value-icon {
+      width: 20px; height: 20px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--clr-blue);
+    }
+    .value-text {
+      font-family: var(--ff-label);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--clr-cream);
+    }
+
+    /* ============================================================
+       PROJECT GALLERY
+    ============================================================ */
+    .gallery { background: var(--clr-surface); }
+
+    .gallery-header { text-align: center; margin-bottom: 4rem; }
+    .gallery-header .display { font-size: clamp(2.4rem, 4vw, 3.4rem); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: auto;
+      gap: 1.5px;
+    }
+    .gallery-item {
+      overflow: hidden;
+      position: relative;
+      background: var(--clr-surface-2);
+      cursor: none;
+    }
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(8,9,15,0.5);
+      transition: opacity 0.45s;
+    }
+    .gallery-item:hover::after { opacity: 0; }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transform: scale(1.04);
+      transition: transform 0.7s var(--ease);
+    }
+    .gallery-item:hover img { transform: scale(1); }
+
+    /* Row 1 */
+    .gallery-item:nth-child(1) { grid-column: 1 / 7;  grid-row: 1; aspect-ratio: 16/9; }
+    .gallery-item:nth-child(2) { grid-column: 7 / 10; grid-row: 1; }
+    .gallery-item:nth-child(3) { grid-column: 10 / 13; grid-row: 1; }
+    /* Row 2 */
+    .gallery-item:nth-child(4) { grid-column: 1 / 4;  grid-row: 2; aspect-ratio: 1; }
+    .gallery-item:nth-child(5) { grid-column: 4 / 7;  grid-row: 2; aspect-ratio: 1; }
+    .gallery-item:nth-child(6) { grid-column: 7 / 13; grid-row: 2; aspect-ratio: 16/9; }
+    /* Row 3 */
+    .gallery-item:nth-child(7)  { grid-column: 1 / 5;  grid-row: 3; aspect-ratio: 4/3; }
+    .gallery-item:nth-child(8)  { grid-column: 5 / 9;  grid-row: 3; aspect-ratio: 4/3; }
+    .gallery-item:nth-child(9)  { grid-column: 9 / 13; grid-row: 3; aspect-ratio: 4/3; }
+    /* Row 4 */
+    .gallery-item:nth-child(10) { grid-column: 1 / 7;  grid-row: 4; aspect-ratio: 16/9; }
+    .gallery-item:nth-child(11) { grid-column: 7 / 10; grid-row: 4; }
+    .gallery-item:nth-child(12) { grid-column: 10 / 13; grid-row: 4; }
+    /* Row 5 */
+    .gallery-item:nth-child(13) { grid-column: 1 / 4;  grid-row: 5; aspect-ratio: 1; }
+    .gallery-item:nth-child(14) { grid-column: 4 / 8;  grid-row: 5; aspect-ratio: 4/3; }
+    .gallery-item:nth-child(15) { grid-column: 8 / 13; grid-row: 5; aspect-ratio: 16/9; }
+    /* Row 6 */
+    .gallery-item:nth-child(16) { grid-column: 1 / 5;  grid-row: 6; aspect-ratio: 4/3; }
+    .gallery-item:nth-child(17) { grid-column: 5 / 9;  grid-row: 6; aspect-ratio: 4/3; }
+    .gallery-item:nth-child(18) { grid-column: 9 / 13; grid-row: 6; aspect-ratio: 4/3; }
+    /* Row 7 */
+    .gallery-item:nth-child(19) { grid-column: 1 / 7;  grid-row: 7; aspect-ratio: 16/9; }
+    .gallery-item:nth-child(20) { grid-column: 7 / 10; grid-row: 7; }
+    .gallery-item:nth-child(21) { grid-column: 10 / 13; grid-row: 7; }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1.2rem 1.5rem;
+      background: linear-gradient(to top, rgba(8,9,15,0.9), transparent);
+      z-index: 1;
+      transform: translateY(4px);
+      opacity: 0;
+      transition: all 0.4s var(--ease);
+    }
+    .gallery-item:hover .gallery-caption { opacity: 1; transform: none; }
+    .gallery-caption-title {
+      font-family: var(--ff-display);
+      font-size: 1.05rem;
+      color: var(--clr-cream);
+    }
+    .gallery-caption-tag {
+      font-family: var(--ff-label);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--clr-blue-lt);
+    }
+
+    /* Gallery placeholder inner */
+    .gallery-ph {
+      width: 100%; height: 100%;
+      background: var(--clr-surface-2);
+      min-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ============================================================
+       TESTIMONIALS
+    ============================================================ */
+    .testimonials { position: relative; overflow: hidden; }
+    .testimonials::before {
+      content: '"';
+      position: absolute;
+      top: -2rem; left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--ff-display);
+      font-size: 28rem;
+      color: rgba(74,122,173,0.04);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .testimonials-header { text-align: center; margin-bottom: 4.5rem; }
+    .testimonials-header .display { font-size: clamp(2.2rem, 3.5vw, 3.2rem); }
+
+    .reviews-track-wrap {
+      overflow: hidden;
+      position: relative;
+    }
+    .reviews-track-wrap::before,
+    .reviews-track-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 120px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .reviews-track-wrap::before { left: 0;  background: linear-gradient(to right, var(--clr-bg), transparent); }
+    .reviews-track-wrap::after  { right: 0; background: linear-gradient(to left,  var(--clr-bg), transparent); }
+
+    .reviews-track {
+      display: flex;
+      gap: 1.5rem;
+      width: max-content;
+      animation: marquee 40s linear infinite;
+    }
+    .reviews-track:hover { animation-play-state: paused; }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    .review-card {
+      width: 380px;
+      flex-shrink: 0;
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-line);
+      padding: 2.2rem;
+      transition: border-color 0.35s;
+    }
+    .review-card:hover { border-color: rgba(74,122,173,0.4); }
+
+    .review-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 1.2rem;
+      color: var(--clr-blue);
+    }
+    .star { font-size: 0.85rem; }
+
+    .review-text {
+      font-family: var(--ff-display);
+      font-size: 1.12rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--clr-cream);
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+    }
+
+    .review-author { display: flex; align-items: center; gap: 0.85rem; }
+    .review-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--clr-surface-2);
+      border: 1px solid var(--clr-line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ff-display);
+      font-size: 1rem;
+      color: var(--clr-blue);
+      flex-shrink: 0;
+    }
+    .review-name {
+      font-family: var(--ff-label);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--clr-cream);
+    }
+    .review-source { font-size: 0.78rem; color: var(--clr-muted); }
+    .google-badge {
+      margin-left: auto;
+      font-family: var(--ff-label);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--clr-muted);
+      border: 1px solid var(--clr-line);
+      padding: 3px 8px;
+    }
+
+    /* ============================================================
+       CTA BANNER
+    ============================================================ */
+    .cta-banner {
+      padding-block: 6rem;
+      background: var(--clr-surface);
+      border-top: 1px solid var(--clr-line);
+      border-bottom: 1px solid var(--clr-line);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(30,47,92,0.25) 0%, transparent 70%);
+    }
+
+    .cta-banner .label { margin-bottom: 1.2rem; display: block; }
+    .cta-banner .display {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      margin-bottom: 1.5rem;
+      max-width: 700px;
+      margin-inline: auto;
+    }
+    .cta-banner p {
+      color: var(--clr-muted);
+      max-width: 500px;
+      margin-inline: auto;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ============================================================
+       CONTACT
+    ============================================================ */
+    .contact-split {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .contact-info .display { font-size: clamp(2rem, 3vw, 2.8rem); margin-bottom: 1.5rem; }
+    .contact-info p { color: var(--clr-muted); margin-bottom: 2rem; font-size: 0.95rem; }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .contact-detail-icon {
+      width: 42px; height: 42px;
+      border: 1px solid var(--clr-line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--clr-blue);
+    }
+    .contact-detail-label {
+      font-family: var(--ff-label);
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--clr-muted);
+    }
+    .contact-detail-value { font-size: 0.95rem; color: var(--clr-cream); }
+    .contact-detail-value a { transition: color 0.3s; }
+    .contact-detail-value a:hover { color: var(--clr-blue-lt); }
+
+    /* FORM */
+    .contact-form { display: grid; gap: 1.2rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .form-group label {
+      font-family: var(--ff-label);
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--clr-muted);
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-line);
+      color: var(--clr-cream);
+      padding: 0.9rem 1.1rem;
+      font-family: var(--ff-body);
+      font-size: 0.9rem;
+      font-weight: 300;
+      transition: border-color 0.3s;
+      outline: none;
+      -webkit-appearance: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--clr-blue); }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+    .form-group select option { background: var(--clr-surface-2); }
+    .form-submit .btn { width: 100%; justify-content: center; }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      background: var(--clr-surface);
+      border-top: 1px solid var(--clr-line);
+      padding-top: 5rem;
+      padding-bottom: 2.5rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 4rem;
+    }
+
+    .footer-logo { margin-bottom: 1.2rem; }
+    .footer-logo img { height: 60px; width: auto; opacity: 0.9; }
+
+    .footer-brand p {
+      font-size: 0.88rem;
+      color: var(--clr-muted);
+      max-width: 260px;
+      line-height: 1.75;
+    }
+
+    .footer-col-title {
+      font-family: var(--ff-label);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--clr-blue);
+      margin-bottom: 1.4rem;
+    }
+    .footer-links { display: flex; flex-direction: column; gap: 0.7rem; }
+    .footer-links a { font-size: 0.88rem; color: var(--clr-muted); transition: color 0.3s; }
+    .footer-links a:hover { color: var(--clr-cream); }
+
+    .footer-bottom {
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--clr-line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-bottom p { font-size: 0.8rem; color: var(--clr-muted); }
+    .footer-social { display: flex; gap: 1.2rem; }
+    .footer-social a {
+      font-family: var(--ff-label);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--clr-muted);
+      transition: color 0.3s;
+    }
+    .footer-social a:hover { color: var(--clr-blue); }
+
+    /* ============================================================
+       GENERATION BADGE (3rd gen callout)
+    ============================================================ */
+    .gen-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: rgba(30,47,92,0.3);
+      border: 1px solid var(--clr-line);
+      padding: 0.6rem 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .gen-badge span {
+      font-family: var(--ff-label);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--clr-blue-lt);
+    }
+    .gen-badge-num {
+      font-family: var(--ff-display);
+      font-size: 1.4rem;
+      color: var(--clr-blue-lt);
+      line-height: 1;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1024px) {
+      .stats-grid         { grid-template-columns: repeat(2, 1fr); }
+      .services-grid      { grid-template-columns: repeat(2, 1fr); }
+      .about-split        { grid-template-columns: 1fr; gap: 4rem; }
+      .about-img-wrap     { max-width: 520px; margin-inline: auto; }
+      .section-header     { grid-template-columns: 1fr; gap: 1.5rem; }
+      .contact-split      { grid-template-columns: 1fr; gap: 3.5rem; }
+      .footer-grid        { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      section { padding-block: 5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero::before { display: none; }
+      .services-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-item { grid-column: auto !important; grid-row: auto !important; aspect-ratio: 4/3 !important; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor"></div>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" onclick="closeMobile()">Services</a>
+    <a href="#about"    onclick="closeMobile()">About</a>
+    <a href="#projects" onclick="closeMobile()">Projects</a>
+    <a href="#reviews"  onclick="closeMobile()">Reviews</a>
+    <a href="#contact"  onclick="closeMobile()">Contact</a>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <img
+          src="https://harrisgroup.solutions/images/logo.png"
+          alt="Harris Group Drywall Solutions"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        />
+        <div class="nav-logo-fallback" style="display:none;">
+          <span class="nav-logo-name">Harris Group</span>
+          <span class="nav-logo-sub">Drywall Solutions</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact" class="nav-cta btn">Get a Quote</a></li>
+      </ul>
+
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg" id="heroBg"></div>
+
+    <div class="hero-content">
+
+      <div class="hero-logo reveal">
+        <img
+          src="https://harrisgroup.solutions/images/logo.png"
+          alt="Harris Group Drywall Solutions logo"
+          onerror="this.style.display='none';"
+        />
+        <div class="hero-logo-text">
+          <span class="brand-top">Harris Group</span>
+          <span class="brand-main">Drywall</span>
+          <span class="brand-sub">Solutions &mdash; Expert Craftsmanship</span>
+        </div>
+      </div>
+
+      <h1 class="hero-title reveal reveal-delay-1">
+        Lake of the Ozarks'
+        <em>Premier Drywall &amp;<br>Painting Contractors</em>
+      </h1>
+
+      <p class="hero-sub reveal reveal-delay-2">A one stop shop for all.</p>
+
+      <div class="hero-actions reveal reveal-delay-3">
+        <a href="#contact" class="btn btn-primary">Schedule Estimate</a>
+      </div>
+
+      <div class="hero-contact reveal reveal-delay-4">
+        <div class="hero-contact-row">
+          <a href="tel:5738366843">
+            <span class="contact-icon">📞</span>
+            573-836-6843
+          </a>
+          <a href="mailto:harrisgroupllc2024@gmail.com">
+            <span class="contact-icon">✉</span>
+            harrisgroupllc2024@gmail.com
+          </a>
+        </div>
+        <a href="https://www.facebook.com/HarrisGroupLLC" target="_blank" rel="noopener" class="hero-fb">
+          <span class="fb-icon">f</span>
+          <span>Visit us on Facebook<br>@ Harris Group, LLC</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Contractor photo -->
+    <div class="hero-person reveal">
+      <img
+        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80"
+        alt="Harris Group contractor"
+        onerror="this.parentElement.style.display='none';"
+      />
+    </div>
+
+    <!-- Best at the Lake badge -->
+    <div class="hero-badge">
+      <div class="hero-badge-inner">
+        <span class="badge-stars">★★★★★</span>
+        <span class="badge-line1">Best at</span>
+        <span class="badge-line2">The Lake</span>
+        <span class="badge-dash">— Finalist —</span>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       STATS
+  ═══════════════════════════════════════════ -->
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stats-grid">
+
+        <div class="stat-item reveal">
+          <div class="stat-number">5<sup>★</sup></div>
+          <div class="stat-label">Google Rating</div>
+        </div>
+
+        <div class="stat-item reveal reveal-delay-1">
+          <div class="stat-number">3<sup>rd</sup></div>
+          <div class="stat-label">Generation Drywall</div>
+        </div>
+
+        <div class="stat-item reveal reveal-delay-2">
+          <div class="stat-number">60<sup>+</sup></div>
+          <div class="stat-label">Room Renovations</div>
+        </div>
+
+        <div class="stat-item reveal reveal-delay-3">
+          <div class="stat-number">100<sup>%</sup></div>
+          <div class="stat-label">On-Time Delivery</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SERVICES
+  ═══════════════════════════════════════════ -->
+  <section class="services" id="services">
+    <div class="container">
+
+      <div class="section-header">
+        <div>
+          <span class="label reveal">What We Do</span>
+          <h2 class="display reveal reveal-delay-1">Our Core<br>Services</h2>
+        </div>
+        <p class="reveal reveal-delay-2">
+          From custom residential builds to large-scale commercial projects,
+          Harris Group delivers meticulous craftsmanship — on time, on budget,
+          and with the communication you deserve.
+        </p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card reveal">
+          <div class="service-num">01</div>
+          <h3 class="service-title">Residential Drywall</h3>
+          <p class="service-desc">
+            New builds, additions, and remodels. We hang, tape, finish, and
+            texture to the highest standard — so your painter starts on a
+            perfect canvas every time.
+          </p>
+          <a href="#contact" class="service-link">Get a quote →</a>
+        </div>
+
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-num">02</div>
+          <h3 class="service-title">Commercial Renovation</h3>
+          <p class="service-desc">
+            Hotels, multi-unit complexes, offices — large-format jobs demand
+            flexible manpower and constant communication. We scale from 2 to
+            10+ crew members without missing a beat.
+          </p>
+          <a href="#contact" class="service-link">Get a quote →</a>
+        </div>
+
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-num">03</div>
+          <h3 class="service-title">Level 5 Finishing & Texture</h3>
+          <p class="service-desc">
+            Smooth, Level 5, knockdown, orange peel, custom sheetrock designs
+            — every finish applied with the precision and cleanliness that
+            sets our work apart.
+          </p>
+          <a href="#contact" class="service-link">Get a quote →</a>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-num">04</div>
+          <h3 class="service-title">Metal Stud Framing</h3>
+          <p class="service-desc">
+            Commercial and residential metal stud framing done right from the
+            start. Drop/grid ceilings and complete interior demo also available.
+          </p>
+          <a href="#contact" class="service-link">Get a quote →</a>
+        </div>
+
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-num">05</div>
+          <h3 class="service-title">Fire, Water & Termite Restoration</h3>
+          <p class="service-desc">
+            When disaster strikes, we restore walls and ceilings to flawless
+            condition. Fast response, full restoration — from demo through
+            final finish.
+          </p>
+          <a href="#contact" class="service-link">Get a quote →</a>
+        </div>
+
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-num">06</div>
+          <h3 class="service-title">Repair, Patching & Painting</h3>
+          <p class="service-desc">
+            Popcorn ceiling removal, impact repairs, and water damage patching.
+            When your painter can't keep the timeline, we step in — full
+            interior painting available on request.
+          </p>
+          <a href="#contact" class="service-link">Get a quote →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       ABOUT / STORY
+  ═══════════════════════════════════════════ -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-split">
+
+        <!-- Image side -->
+        <div class="about-img-wrap reveal">
+          <!--
+            REPLACE: Add a real photo of Cale or the crew.
+            <img src="images/cale-harris.jpg" alt="Cale Harris — Harris Group Drywall Solutions" class="about-img-main" />
+          -->
+          <img
+            src="https://i.ibb.co/Xdn2Msd/harris1.jpg"
+            alt="Harris Group Drywall Solutions — expert craftsmanship"
+            class="about-img-main"
+          />
+
+          <div class="about-badge">
+            <div class="about-badge-num">5★</div>
+            <div class="about-badge-text">Google Rated</div>
+          </div>
+        </div>
+
+        <!-- Text side -->
+        <div class="about-content">
+
+          <div class="gen-badge reveal">
+            <span class="gen-badge-num">3</span>
+            <span>rd Generation Drywall Craftsman</span>
+          </div>
+
+          <span class="label reveal">Our Story</span>
+          <h2 class="display reveal reveal-delay-1">
+            Building Trust, One<br>Wall at a Time.
+          </h2>
+          <p class="reveal reveal-delay-2">
+            Cale Harris grew up in the drywall trade — the third generation of
+            his family to master the craft. He brought that heritage and
+            his experience to Osage Beach, Camdenton, and Lake Ozark, building
+            Harris Group Drywall Solutions on a single promise: show up on time,
+            communicate clearly, and never leave a job site anything less
+            than spotless.
+          </p>
+          <p class="reveal reveal-delay-3">
+            That commitment has earned five-star Google reviews from
+            homebuilders, property managers, and commercial contractors alike
+            — from a 60-room Holiday Inn Express renovation to custom new
+            builds and everything in between.
+          </p>
+
+          <div class="values-list">
+            <div class="value-item reveal">
+              <svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span class="value-text">Responsive Communication</span>
+            </div>
+            <div class="value-item reveal reveal-delay-1">
+              <svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span class="value-text">Flexible Crew Scaling</span>
+            </div>
+            <div class="value-item reveal reveal-delay-2">
+              <svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span class="value-text">Immaculate Jobsite Cleanliness</span>
+            </div>
+            <div class="value-item reveal reveal-delay-3">
+              <svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span class="value-text">On-Time Delivery</span>
+            </div>
+            <div class="value-item reveal">
+              <svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span class="value-text">3rd Generation Expertise</span>
+            </div>
+            <div class="value-item reveal reveal-delay-1">
+              <svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span class="value-text">Mid-Missouri Coverage</span>
+            </div>
+          </div>
+
+          <a href="#contact" class="btn btn-primary btn-arrow reveal">Start Your Project</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       PROJECT GALLERY
+  ═══════════════════════════════════════════ -->
+  <section class="gallery" id="projects">
+    <div class="container">
+      <div class="gallery-header">
+        <span class="label reveal">Our Work</span>
+        <h2 class="display reveal reveal-delay-1">Recent Projects</h2>
+        <p class="body-sm reveal reveal-delay-2" style="margin-top:0.8rem;">
+          From Lake of the Ozarks to Mid-Missouri — residential and commercial.
+        </p>
+      </div>
+
+      <div class="gallery-grid reveal">
+        <!--
+          REPLACE: Drop real project photos into each .gallery-item.
+          Suggested sources: pull from @harrisgroup_solutions Instagram
+          or photos provided by Cale.
+        -->
+        <div class="gallery-item">
+          <img src="https://i.ibb.co/fYXQtb2Y/harris2.jpg" alt="Custom new build — Harris Group Drywall" loading="lazy" />
+          <div class="gallery-caption">
+            <div class="gallery-caption-tag">Residential</div>
+            <div class="gallery-caption-title">Custom New Build</div>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://i.ibb.co/DHf4Nrth/harris3.jpg" alt="New build finishing — Harris Group" loading="lazy" />
+          <div class="gallery-caption">
+            <div class="gallery-caption-tag">Residential</div>
+            <div class="gallery-caption-title">New Build Finishing</div>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://i.ibb.co/yr9gVvq/harris4.jpg" alt="Drywall finishing — Harris Group" loading="lazy" />
+          <div class="gallery-caption">
+            <div class="gallery-caption-tag">Finishing</div>
+            <div class="gallery-caption-title">Premium Drywall Finish</div>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://i.ibb.co/xSmPWz18/harris5.jpg" alt="Residential build — Harris Group Drywall" loading="lazy" />
+          <div class="gallery-caption">
+            <div class="gallery-caption-tag">Residential</div>
+            <div class="gallery-caption-title">Residential Build</div>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://i.ibb.co/hFCBdCrv/harris6.jpg" alt="Interior drywall — Harris Group" loading="lazy" />
+          <div class="gallery-caption">
+            <div class="gallery-caption-tag">Residential</div>
+            <div class="gallery-caption-title">Interior Drywall</div>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://i.ibb.co/Cp8Wgtrq/harris7.jpg" alt="Custom home — Harris Group Drywall" loading="lazy" />
+          <div class="gallery-caption">
+            <div class="gallery-caption-tag">Residential</div>
+            <div class="gallery-caption-title">Custom Home Build</div>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://i.ibb.co/0pL3snQp/harris8.jpg" alt="Drywall installation — Harris Group" loading="lazy" />
+          <div class="gallery-caption">
+            <div class="gallery-caption-tag">Residential</div>
+            <div class="gallery-caption-title">Drywall Installation</div>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://i.ibb.co/MydWt4K8/harris9.jpg" alt="Smooth finish — Harris Group Drywall" loading="lazy" />
+          <div class="gallery-caption">
+            <div class="gallery-caption-tag">Finishing</div>
+            <div class="gallery-caption-title">Smooth Finish</div>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://i.ibb.co/DfQrTndw/harris10.jpg" alt="New construction — Harris Group Drywall" loading="lazy" />
+          <div class="gallery-caption">
+            <div class="gallery-caption-tag">Residential</div>
+            <div class="gallery-caption-title">New Construction</div>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://i.ibb.co/BHLw94DL/harris11.jpg" alt="Commercial renovation — Harris Group" loading="lazy" />
+          <div class="gallery-caption">
+            <div class="gallery-caption-tag">Commercial</div>
+            <div class="gallery-caption-title">Commercial Renovation</div>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://i.ibb.co/60TJDgqQ/harris12.jpg" alt="Level 5 finish — Harris Group Drywall" loading="lazy" />
+          <div class="gallery-caption">
+            <div class="gallery-caption-tag">Finishing</div>
+            <div class="gallery-caption-title">Level 5 Finish</div>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://i.ibb.co/1hJnPq5/harris13.jpg" alt="Residential remodel — Harris Group" loading="lazy" />
+          <div class="gallery-caption">
+            <div class="gallery-caption-tag">Residential</div>
+            <div class="gallery-caption-title">Residential Remodel</div>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://i.ibb.co/Xx70hz0L/harris14.jpg" alt="Interior finishing — Harris Group Drywall" loading="lazy" />
+          <div class="gallery-caption">
+            <div class="gallery-caption-tag">Finishing</div>
+            <div class="gallery-caption-title">Interior Finishing</div>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://i.ibb.co/CKxDCRQ3/harris15.jpg" alt="Custom build — Harris Group Drywall" loading="lazy" />
+          <div class="gallery-caption">
+            <div class="gallery-caption-tag">Residential</div>
+            <div class="gallery-caption-title">Custom Build</div>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://i.ibb.co/zWnF66wp/harris16.jpg" alt="Drywall texturing — Harris Group" loading="lazy" />
+          <div class="gallery-caption">
+            <div class="gallery-caption-tag">Texture</div>
+            <div class="gallery-caption-title">Drywall Texturing</div>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://i.ibb.co/9kFqdR57/harris17.jpg" alt="New build — Harris Group Drywall Solutions" loading="lazy" />
+          <div class="gallery-caption">
+            <div class="gallery-caption-tag">Residential</div>
+            <div class="gallery-caption-title">New Build</div>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://i.ibb.co/WvGJ2JrC/harris18.jpg" alt="Drywall hanging — Harris Group" loading="lazy" />
+          <div class="gallery-caption">
+            <div class="gallery-caption-tag">Residential</div>
+            <div class="gallery-caption-title">Drywall Hanging</div>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://i.ibb.co/CKyqw6TV/harris19.jpg" alt="Renovation — Harris Group Drywall" loading="lazy" />
+          <div class="gallery-caption">
+            <div class="gallery-caption-tag">Renovation</div>
+            <div class="gallery-caption-title">Renovation Project</div>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://i.ibb.co/wNzbpN02/harris20.jpg" alt="Expert finishing — Harris Group Drywall" loading="lazy" />
+          <div class="gallery-caption">
+            <div class="gallery-caption-tag">Finishing</div>
+            <div class="gallery-caption-title">Expert Finishing</div>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://i.ibb.co/QvQY1PTQ/harris21.jpg" alt="Completed project — Harris Group Drywall" loading="lazy" />
+          <div class="gallery-caption">
+            <div class="gallery-caption-tag">Residential</div>
+            <div class="gallery-caption-title">Completed Project</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       TESTIMONIALS
+  ═══════════════════════════════════════════ -->
+  <section class="testimonials" id="reviews">
+    <div class="container">
+      <div class="testimonials-header">
+        <span class="label reveal">What Clients Say</span>
+        <h2 class="display reveal reveal-delay-1">5-Star Work,<br>Every Time.</h2>
+      </div>
+    </div>
+
+    <div class="reviews-track-wrap">
+      <div class="reviews-track">
+
+        <div class="review-card">
+          <div class="review-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="review-text">
+            "Cale and his crew did a fantastic job on our new build. The quality
+            and cleanliness of the job is second to none. It is comforting to know
+            we can count on them for our future builds."
+          </p>
+          <div class="review-author">
+            <div class="review-avatar">J</div>
+            <div>
+              <div class="review-name">Joe Glorioso</div>
+              <div class="review-source">J&amp;V Custom Homes</div>
+            </div>
+            <span class="google-badge">Google</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="review-text">
+            "Not only was Cale responsive and reliable, but he went above and beyond
+            to make this project happen in a timely fashion. After the drywall, when
+            my painter couldn't keep the timeline, Cale stepped in — exceptional."
+          </p>
+          <div class="review-author">
+            <div class="review-avatar">D</div>
+            <div>
+              <div class="review-name">Donna Colonius</div>
+              <div class="review-source">Residential Client</div>
+            </div>
+            <span class="google-badge">Google</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="review-text">
+            "Harris Group Drywall delivered a 5-star job throughout the entirety of
+            the 60-room renovation at Holiday Inn Express. The job demanded constant
+            communication and varied manpower — they delivered without fail."
+          </p>
+          <div class="review-author">
+            <div class="review-avatar">M</div>
+            <div>
+              <div class="review-name">Matt Lawson</div>
+              <div class="review-source">Holiday Inn Express</div>
+            </div>
+            <span class="google-badge">Google</span>
+          </div>
+        </div>
+
+        <!-- Duplicates for seamless loop -->
+        <div class="review-card">
+          <div class="review-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="review-text">
+            "Cale and his crew did a fantastic job on our new build. The quality
+            and cleanliness of the job is second to none. It is comforting to know
+            we can count on them for our future builds."
+          </p>
+          <div class="review-author">
+            <div class="review-avatar">J</div>
+            <div>
+              <div class="review-name">Joe Glorioso</div>
+              <div class="review-source">J&amp;V Custom Homes</div>
+            </div>
+            <span class="google-badge">Google</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="review-text">
+            "Not only was Cale responsive and reliable, but he went above and beyond
+            to make this project happen in a timely fashion. When my painter couldn't
+            keep the timeline, Cale stepped in and got it done."
+          </p>
+          <div class="review-author">
+            <div class="review-avatar">D</div>
+            <div>
+              <div class="review-name">Donna Colonius</div>
+              <div class="review-source">Residential Client</div>
+            </div>
+            <span class="google-badge">Google</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="review-text">
+            "Harris Group Drywall delivered a 5-star job throughout the entirety of
+            the 60-room renovation at Holiday Inn Express."
+          </p>
+          <div class="review-author">
+            <div class="review-avatar">M</div>
+            <div>
+              <div class="review-name">Matt Lawson</div>
+              <div class="review-source">Holiday Inn Express</div>
+            </div>
+            <span class="google-badge">Google</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       CTA BANNER
+  ═══════════════════════════════════════════ -->
+  <div class="cta-banner">
+    <div class="container">
+      <span class="label reveal">Ready to Start?</span>
+      <h2 class="display reveal reveal-delay-1">
+        Let's Build<br>Something Great.
+      </h2>
+      <p class="reveal reveal-delay-2">
+        Responsive, reliable, and ready to scale. Reach out today and Cale
+        will personally get back to you fast.
+      </p>
+      <div class="reveal reveal-delay-3">
+        <a href="#contact" class="btn btn-primary btn-arrow">Get a Free Quote</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       CONTACT
+  ═══════════════════════════════════════════ -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-split">
+
+        <div class="contact-info">
+          <span class="label reveal">Get in Touch</span>
+          <h2 class="display reveal reveal-delay-1">Let's Discuss<br>Your Project.</h2>
+          <p class="reveal reveal-delay-2">
+            Whether it's a single room, a custom home, or a commercial renovation
+            — send us the details and we'll get back to you with a clear,
+            honest quote. No runaround.
+          </p>
+
+          <div class="contact-detail reveal">
+            <div class="contact-detail-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.09a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 15.92v1z"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Phone</div>
+              <div class="contact-detail-value"><a href="tel:+15738366843">(573) 836-6843</a></div>
+            </div>
+          </div>
+
+          <div class="contact-detail reveal reveal-delay-1">
+            <div class="contact-detail-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Email</div>
+              <div class="contact-detail-value"><a href="mailto:info@harrisgroup.solutions">info@harrisgroup.solutions</a></div>
+            </div>
+          </div>
+
+          <div class="contact-detail reveal reveal-delay-2">
+            <div class="contact-detail-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Service Area</div>
+              <div class="contact-detail-value">Lake of the Ozarks, Camdenton, Osage Beach &amp; Mid-Missouri</div>
+            </div>
+          </div>
+
+          <div class="contact-detail reveal reveal-delay-3">
+            <div class="contact-detail-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Follow Us</div>
+              <div class="contact-detail-value">
+                <a href="https://www.instagram.com/harrisgroup_solutions/" target="_blank" rel="noopener">@harrisgroup_solutions</a>
+                &nbsp;·&nbsp;
+                <a href="https://www.facebook.com/HGSOLUTIONS24/" target="_blank" rel="noopener">Facebook</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <form class="contact-form reveal reveal-delay-2" name="contact" method="POST" data-netlify="true">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="first_name" required placeholder="First name" />
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="last_name" required placeholder="Last name" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required placeholder="you@example.com" />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" placeholder="(573) 000-0000" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="project_type">Project Type</label>
+            <select id="project_type" name="project_type">
+              <option value="" disabled selected>Select a service…</option>
+              <option>Residential New Build</option>
+              <option>Residential Remodel</option>
+              <option>Commercial Renovation</option>
+              <option>Level 5 Finishing</option>
+              <option>Metal Stud Framing</option>
+              <option>Fire / Water / Termite Restoration</option>
+              <option>Repair &amp; Patching</option>
+              <option>Popcorn Ceiling Removal</option>
+              <option>Painting</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Tell Us About Your Project</label>
+            <textarea id="message" name="message" placeholder="Square footage, timeline, location, any special requirements…"></textarea>
+          </div>
+
+          <div class="form-submit">
+            <button type="submit" class="btn btn-primary btn-arrow">Send Message</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img
+              src="https://harrisgroup.solutions/images/logo.png"
+              alt="Harris Group Drywall Solutions"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div style="display:none;">
+              <span class="nav-logo-name">Harris Group</span>
+              <span class="nav-logo-sub" style="display:block;">Drywall Solutions</span>
+            </div>
+          </div>
+          <p>
+            Expert craftsmanship in drywall installation, Level 5 finishing,
+            commercial renovation, and restoration across Lake of the Ozarks
+            and Mid-Missouri. Quality and cleanliness — every time.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Services</div>
+          <ul class="footer-links">
+            <li><a href="#services">Residential Drywall</a></li>
+            <li><a href="#services">Commercial Renovation</a></li>
+            <li><a href="#services">Level 5 Finishing &amp; Texture</a></li>
+            <li><a href="#services">Metal Stud Framing</a></li>
+            <li><a href="#services">Fire / Water Restoration</a></li>
+            <li><a href="#services">Repair &amp; Patching</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Company</div>
+          <ul class="footer-links">
+            <li><a href="#about">About Cale &amp; the Team</a></li>
+            <li><a href="#projects">Project Gallery</a></li>
+            <li><a href="#reviews">Client Reviews</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="https://harrisgroup.solutions/residential" target="_blank" rel="noopener">Residential</a></li>
+            <li><a href="https://harrisgroup.solutions/commercial" target="_blank" rel="noopener">Commercial</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Contact</div>
+          <ul class="footer-links">
+            <li><a href="tel:+15738366843">(573) 836-6843</a></li>
+            <li><a href="mailto:info@harrisgroup.solutions">info@harrisgroup.solutions</a></li>
+            <li><a href="#">Camdenton / Osage Beach, MO</a></li>
+            <li><a href="#">Lake of the Ozarks Region</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 Harris Group Drywall Solutions, LLC. All rights reserved.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/HGSOLUTIONS24/" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/harrisgroup_solutions/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://harrisgroup.solutions/" target="_blank" rel="noopener">Website</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════
+       JAVASCRIPT
+  ═══════════════════════════════════════════ -->
+  <script>
+    /* ── Custom cursor ──────────────────────── */
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top  = e.clientY + 'px';
+    });
+    document.querySelectorAll('a, button, .service-card, .gallery-item').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('grow'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('grow'));
+    });
+
+    /* ── Nav scroll tint ────────────────────── */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    /* ── Scroll reveal ──────────────────────── */
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer  = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('revealed');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+
+    /* ── Hero bg slow zoom on load ──────────── */
+    window.addEventListener('load', () => {
+      document.getElementById('heroBg').classList.add('loaded');
+    });
+
+    /* ── Mobile menu ────────────────────────── */
+    const hamburger  = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow =
+        mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+
+    function closeMobile() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  </script>
+
+</body>
+</html>

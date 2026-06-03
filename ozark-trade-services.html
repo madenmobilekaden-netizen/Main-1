@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ozark Trade Services LLC — Welding & Skid Steer Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --dark: #111213;
+    --panel: #161819;
+    --border: #2a2c2e;
+    --orange: #e8761a;
+    --orange-light: #f59432;
+    --orange-dim: rgba(232,118,26,0.15);
+    --white: #f4f1ec;
+    --grey: #9a9590;
+    --light-grey: #cec9c0;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* ─── NOISE OVERLAY ─────────────────────────────────── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.028;
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* ─── NAV ────────────────────────────────────────────── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5vw;
+    height: 72px;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.12em;
+    color: var(--white);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .nav-logo span { color: var(--orange); }
+
+  .nav-logo-icon {
+    width: 36px; height: 36px;
+    background: var(--orange);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .nav-logo-icon svg { width: 18px; height: 18px; fill: #fff; }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--light-grey);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--orange); }
+
+  .nav-cta {
+    background: var(--orange);
+    color: #000 !important;
+    padding: 8px 20px;
+    font-weight: 700 !important;
+    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--orange-light) !important; color: #000 !important; }
+
+  /* ─── HERO ────────────────────────────────────────────── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 5vw 8vh;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(160deg, transparent 40%, rgba(232,118,26,0.07) 100%),
+      linear-gradient(to bottom, rgba(10,10,10,0) 0%, rgba(10,10,10,0.65) 60%, var(--dark) 100%),
+      url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1800&q=80&fit=crop') center/cover no-repeat;
+  }
+
+  .hero-grid-lines {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(232,118,26,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(232,118,26,0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    position: relative;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: var(--orange);
+  }
+
+  .hero-title {
+    position: relative;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 11vw, 10rem);
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    margin-bottom: 28px;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+  .hero-title em {
+    font-style: normal;
+    color: var(--orange);
+  }
+
+  .hero-sub {
+    position: relative;
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--light-grey);
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 44px;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-actions {
+    position: relative;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .btn-primary {
+    background: var(--orange);
+    color: #000;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    text-decoration: none;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 15px 36px;
+    border: 1px solid var(--border);
+    text-decoration: none;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    transition: border-color 0.2s, color 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-secondary:hover { border-color: var(--orange); color: var(--orange); transform: translateY(-2px); }
+
+  .hero-stat-strip {
+    position: relative;
+    display: flex;
+    gap: 0;
+    margin-top: 64px;
+    border-top: 1px solid var(--border);
+    padding-top: 32px;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+  .hero-stat {
+    flex: 1;
+    border-right: 1px solid var(--border);
+    padding-right: 32px;
+    margin-right: 32px;
+  }
+  .hero-stat:last-child { border-right: none; margin-right: 0; padding-right: 0; }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8rem;
+    color: var(--orange);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-top: 4px;
+  }
+
+  /* ─── SECTION SHARED ────────────────────────────────── */
+  section { padding: 100px 5vw; }
+
+  .section-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 2px;
+    background: var(--orange);
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.6rem, 5vw, 4.5rem);
+    line-height: 0.95;
+    letter-spacing: 0.03em;
+    margin-bottom: 20px;
+  }
+
+  .section-body {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--light-grey);
+    line-height: 1.75;
+    max-width: 600px;
+  }
+
+  /* ─── SERVICES ─────────────────────────────────────── */
+  #services { background: var(--black); }
+
+  .services-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2px;
+  }
+
+  .service-card {
+    background: var(--panel);
+    padding: 44px 36px;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+    cursor: default;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--orange);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .service-card:hover { border-color: rgba(232,118,26,0.35); transform: translateY(-4px); }
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-icon {
+    width: 52px; height: 52px;
+    background: var(--orange-dim);
+    border: 1px solid rgba(232,118,26,0.3);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 24px;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+  .service-icon svg { width: 24px; height: 24px; stroke: var(--orange); fill: none; stroke-width: 1.8; }
+
+  .service-num {
+    position: absolute;
+    top: 28px; right: 28px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+  }
+
+  .service-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.04em;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .service-desc {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--grey);
+    line-height: 1.7;
+  }
+
+  .service-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 24px;
+  }
+  .tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--orange);
+    background: var(--orange-dim);
+    border: 1px solid rgba(232,118,26,0.2);
+    padding: 4px 10px;
+  }
+
+  /* ─── SECTORS ──────────────────────────────────────── */
+  #sectors {
+    background: var(--dark);
+    padding: 0;
+  }
+  .sectors-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 420px;
+  }
+  .sectors-left {
+    padding: 80px 5vw;
+    background: var(--panel);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .sectors-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  .sector-cell {
+    border: 1px solid var(--border);
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .sector-cell:hover { background: var(--orange-dim); }
+  .sector-cell-icon {
+    font-size: 1.8rem;
+    line-height: 1;
+  }
+  .sector-cell-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.06em;
+    color: var(--white);
+  }
+  .sector-cell-desc {
+    font-size: 0.82rem;
+    color: var(--grey);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* ─── WHY US / PILLARS ──────────────────────────────── */
+  #why {
+    background: var(--black);
+    position: relative;
+  }
+  #why::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 5vw; right: 5vw;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--orange), transparent);
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-top: 60px;
+  }
+
+  .why-visual {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+  }
+  .why-visual img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: grayscale(30%) contrast(1.1);
+  }
+  .why-visual::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(232,118,26,0.18) 0%, transparent 60%);
+  }
+  .why-visual-badge {
+    position: absolute;
+    bottom: -1px; right: -1px;
+    background: var(--orange);
+    color: #000;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.14em;
+    padding: 12px 20px;
+    z-index: 2;
+  }
+
+  .pillars {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .pillar {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .pillar:last-child { border-bottom: none; }
+  .pillar-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: var(--orange);
+    line-height: 1;
+    min-width: 36px;
+  }
+  .pillar-content {}
+  .pillar-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .pillar-desc {
+    font-size: 0.88rem;
+    color: var(--grey);
+    font-weight: 300;
+    line-height: 1.65;
+  }
+
+  /* ─── REVIEW ───────────────────────────────────────── */
+  #review {
+    background: var(--panel);
+    padding: 90px 5vw;
+    position: relative;
+    overflow: hidden;
+  }
+  #review::before {
+    content: '"';
+    position: absolute;
+    top: -40px; left: 4vw;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22rem;
+    color: rgba(232,118,26,0.06);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .review-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+  }
+
+  .stars {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 28px;
+  }
+  .star { color: var(--orange); font-size: 1.3rem; }
+
+  .review-text {
+    font-family: 'Barlow', sans-serif;
+    font-size: clamp(1.1rem, 2vw, 1.45rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--light-grey);
+    line-height: 1.75;
+    margin-bottom: 36px;
+  }
+
+  .reviewer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+  .reviewer-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--orange);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    color: #000;
+    flex-shrink: 0;
+  }
+  .reviewer-info {}
+  .reviewer-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--white);
+  }
+  .reviewer-meta {
+    font-size: 0.78rem;
+    color: var(--grey);
+    margin-top: 2px;
+  }
+  .google-badge {
+    margin-left: 12px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid var(--border);
+    padding: 4px 12px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--grey);
+    text-transform: uppercase;
+  }
+
+  /* ─── PROCESS ──────────────────────────────────────── */
+  #process {
+    background: var(--dark);
+  }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 60px;
+    border: 1px solid var(--border);
+  }
+  .process-step {
+    padding: 40px 28px;
+    border-right: 1px solid var(--border);
+    position: relative;
+  }
+  .process-step:last-child { border-right: none; }
+  .process-step::after {
+    content: '→';
+    position: absolute;
+    right: -14px;
+    top: 40px;
+    color: var(--orange);
+    font-size: 1.2rem;
+    z-index: 2;
+  }
+  .process-step:last-child::after { display: none; }
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    color: var(--orange-dim);
+    line-height: 1;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 16px;
+  }
+  .step-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+  .step-desc {
+    font-size: 0.85rem;
+    color: var(--grey);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* ─── CONTACT ──────────────────────────────────────── */
+  #contact {
+    background: var(--black);
+    position: relative;
+    overflow: hidden;
+  }
+  #contact::after {
+    content: 'CONTACT';
+    position: absolute;
+    bottom: -40px; right: -20px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18rem;
+    color: rgba(255,255,255,0.018);
+    pointer-events: none;
+    line-height: 1;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    margin-top: 60px;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .contact-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .contact-item:last-child { border-bottom: none; }
+  .contact-item-icon {
+    width: 44px; height: 44px;
+    background: var(--orange-dim);
+    border: 1px solid rgba(232,118,26,0.25);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-item-icon svg { width: 20px; height: 20px; stroke: var(--orange); fill: none; stroke-width: 1.8; }
+  .contact-item-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 4px;
+  }
+  .contact-item-value {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--white);
+  }
+
+  /* form */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .form-group label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--grey);
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.92rem;
+    padding: 12px 16px;
+    outline: none;
+    transition: border-color 0.2s;
+    resize: vertical;
+    appearance: none;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus { border-color: var(--orange); }
+  .form-group select option { background: var(--panel); }
+  .form-group textarea { min-height: 120px; }
+
+  .form-submit {
+    background: var(--orange);
+    color: #000;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 16px 32px;
+    border: none;
+    cursor: pointer;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    transition: background 0.2s, transform 0.2s;
+    margin-top: 8px;
+    align-self: flex-start;
+  }
+  .form-submit:hover { background: var(--orange-light); transform: translateY(-2px); }
+
+  /* ─── FOOTER ────────────────────────────────────────── */
+  footer {
+    background: var(--black);
+    border-top: 1px solid var(--border);
+    padding: 48px 5vw 32px;
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.12em;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .footer-logo span { color: var(--orange); }
+  .footer-copy {
+    font-size: 0.78rem;
+    color: var(--grey);
+  }
+  .footer-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+  .footer-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--grey);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--orange); }
+
+  /* ─── MOBILE NAV TOGGLE ─────────────────────────────── */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 24px; height: 2px;
+    background: var(--white);
+    transition: all 0.3s;
+  }
+
+  /* ─── SCROLL REVEAL ─────────────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ─── ANIMATIONS ────────────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* ─── MOBILE ─────────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+
+    .hero-stat-strip { flex-direction: column; gap: 24px; }
+    .hero-stat { border-right: none; border-bottom: 1px solid var(--border); margin-right: 0; padding-right: 0; padding-bottom: 24px; margin-bottom: 0; }
+    .hero-stat:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .services-header { flex-direction: column; align-items: flex-start; }
+
+    .sectors-inner { grid-template-columns: 1fr; }
+    .sectors-right { grid-template-columns: 1fr 1fr; }
+
+    .why-grid { grid-template-columns: 1fr; }
+    .why-visual { aspect-ratio: 16/9; }
+
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .process-step:nth-child(2) { border-right: none; }
+    .process-step:nth-child(2)::after { display: none; }
+
+    .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    .form-row { grid-template-columns: 1fr; }
+
+    .footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+  }
+
+  @media (max-width: 600px) {
+    .process-steps { grid-template-columns: 1fr; }
+    .process-step { border-right: none; }
+    .process-step::after { display: none; }
+    .sectors-right { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ──────────────────────────── -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    OZARK<span>&nbsp;TRADE</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#sectors">Sectors</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+  </ul>
+  <div class="nav-hamburger" onclick="this.classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ─── HERO ──────────────────────────── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+
+  <div class="hero-eyebrow">Mobile · On-Site · Full-Service</div>
+
+  <h1 class="hero-title">
+    Built Tough.<br>
+    Delivered <em>On-Site.</em>
+  </h1>
+
+  <p class="hero-sub">
+    Ozark Trade Services LLC brings expert welding and versatile skid steer solutions directly to your job — serving agricultural, construction, industrial, and residential clients across the Ozarks.
+  </p>
+
+  <div class="hero-actions">
+    <a href="#contact" class="btn-primary">Request a Free Quote</a>
+    <a href="#services" class="btn-secondary">View Our Services</a>
+  </div>
+
+  <div class="hero-stat-strip">
+    <div class="hero-stat">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Mobile & On-Site</div>
+    </div>
+    <div class="hero-stat">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Industries Served</div>
+    </div>
+    <div class="hero-stat">
+      <div class="stat-num">5★</div>
+      <div class="stat-label">Google Rated</div>
+    </div>
+    <div class="hero-stat">
+      <div class="stat-num">LLC</div>
+      <div class="stat-label">Licensed & Professional</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICES ──────────────────────── -->
+<section id="services">
+  <div class="services-header">
+    <div>
+      <div class="section-eyebrow">What We Do</div>
+      <h2 class="section-title">Our Core<br>Services</h2>
+    </div>
+    <p class="section-body" style="max-width:380px;">High-quality work, delivered on your timeline — no hauling required. We come to you.</p>
+  </div>
+
+  <div class="services-grid">
+
+    <div class="service-card reveal">
+      <div class="service-num">01</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2v6M12 16v6M4.93 4.93l4.24 4.24M14.83 14.83l4.24 4.24M2 12h6M16 12h6M4.93 19.07l4.24-4.24M14.83 9.17l4.24-4.24" stroke-linecap="round"/></svg>
+      </div>
+      <h3 class="service-title">Custom Welding</h3>
+      <p class="service-desc">Precision welds built to last. From structural steel fabrication to custom metalwork, we bring the torch to your location with professional, clean results every time.</p>
+      <div class="service-tags">
+        <span class="tag">MIG & TIG</span>
+        <span class="tag">Structural</span>
+        <span class="tag">Custom Fab</span>
+      </div>
+    </div>
+
+    <div class="service-card reveal" style="transition-delay:0.1s">
+      <div class="service-num">02</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="1"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+      </div>
+      <h3 class="service-title">Welding Repair</h3>
+      <p class="service-desc">Broken equipment, cracked frames, damaged fencing — we restore structural integrity on-site so you're back in business fast. Clean welds, done right the first time.</p>
+      <div class="service-tags">
+        <span class="tag">Fencing</span>
+        <span class="tag">Equipment</span>
+        <span class="tag">Frames</span>
+      </div>
+    </div>
+
+    <div class="service-card reveal" style="transition-delay:0.2s">
+      <div class="service-num">03</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 17h2l1-4h12l1 4h2"/><path d="M5 17l-1 4h16l-1-4"/><rect x="6" y="9" width="12" height="4" rx="1"/><path d="M8 9V7a4 4 0 0 1 8 0v2"/></svg>
+      </div>
+      <h3 class="service-title">Skid Steer Services</h3>
+      <p class="service-desc">Versatile skid steer equipment for land clearing, grading, excavation, material moving, and more. We handle the heavy lifting on agricultural and construction sites of all sizes.</p>
+      <div class="service-tags">
+        <span class="tag">Land Clearing</span>
+        <span class="tag">Grading</span>
+        <span class="tag">Excavation</span>
+      </div>
+    </div>
+
+    <div class="service-card reveal" style="transition-delay:0.3s">
+      <div class="service-num">04</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M2 20h20M4 20V10l8-6 8 6v10"/><path d="M10 20v-6h4v6"/></svg>
+      </div>
+      <h3 class="service-title">Residential Projects</h3>
+      <p class="service-desc">Gates, fences, decorative metalwork, and outdoor structures — we bring craftsmanship to homeowners who want quality that holds up and looks great for years.</p>
+      <div class="service-tags">
+        <span class="tag">Gates</span>
+        <span class="tag">Fencing</span>
+        <span class="tag">Metal Work</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── SECTORS ─────────────────────── -->
+<section id="sectors" style="padding:0;">
+  <div class="sectors-inner">
+    <div class="sectors-left reveal">
+      <div class="section-eyebrow">Industries</div>
+      <h2 class="section-title">Who We<br>Serve</h2>
+      <p class="section-body" style="margin-top:16px;">From farms to job sites to factories — our mobile operation goes where you need us, no matter the industry.</p>
+    </div>
+    <div class="sectors-right">
+      <div class="sector-cell reveal">
+        <div class="sector-cell-icon">🌾</div>
+        <div class="sector-cell-name">Agricultural</div>
+        <p class="sector-cell-desc">Farm equipment repair, fencing, and heavy machinery welding in the field.</p>
+      </div>
+      <div class="sector-cell reveal" style="transition-delay:0.1s">
+        <div class="sector-cell-icon">🏗️</div>
+        <div class="sector-cell-name">Construction</div>
+        <p class="sector-cell-desc">On-site structural welding, land clearing, grading, and equipment support.</p>
+      </div>
+      <div class="sector-cell reveal" style="transition-delay:0.2s">
+        <div class="sector-cell-icon">🏭</div>
+        <div class="sector-cell-name">Industrial</div>
+        <p class="sector-cell-desc">Fabrication, pipe welding, and maintenance welding for industrial facilities.</p>
+      </div>
+      <div class="sector-cell reveal" style="transition-delay:0.3s">
+        <div class="sector-cell-icon">🏡</div>
+        <div class="sector-cell-name">Residential</div>
+        <p class="sector-cell-desc">Fences, gates, railings, and custom metalwork for homes and properties.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHY US ─────────────────────── -->
+<section id="why">
+  <div class="section-eyebrow reveal">Why Choose Us</div>
+  <h2 class="section-title reveal">The Ozark<br>Difference</h2>
+
+  <div class="why-grid">
+    <div class="why-visual reveal">
+      <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?w=900&q=80&fit=crop" alt="Professional welding work">
+      <div class="why-visual-badge">5★ Google Rated</div>
+    </div>
+
+    <div class="pillars reveal" style="transition-delay:0.15s">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <div class="pillar-content">
+          <div class="pillar-title">Fully Mobile Operation</div>
+          <p class="pillar-desc">We bring the equipment to you — no hauling, no downtime transporting machines. You save time and money from the moment we arrive.</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <div class="pillar-content">
+          <div class="pillar-title">First-Time Quality</div>
+          <p class="pillar-desc">Our clients consistently note that the work is done right the first time. Clean welds, professional execution, no call-backs needed.</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <div class="pillar-content">
+          <div class="pillar-title">Clear Communication</div>
+          <p class="pillar-desc">We show up on time, communicate clearly, and keep you informed through every step of the job. No surprises on scope or price.</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">04</div>
+        <div class="pillar-content">
+          <div class="pillar-title">Fair, Transparent Pricing</div>
+          <p class="pillar-desc">Quality craftsmanship at fair rates. We provide honest quotes upfront so you know exactly what you're getting before we start.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── REVIEW ─────────────────────── -->
+<section id="review">
+  <div class="review-inner reveal">
+    <div class="stars">
+      <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+    </div>
+    <p class="review-text">
+      "Their team showed up on time, communicated clearly, and handled the job with real professionalism. The welds were clean, strong, and done right the first time. You can tell they take pride in their work. Quality craftsmanship, fair pricing, and great customer service."
+    </p>
+    <div class="reviewer">
+      <div class="reviewer-avatar">CM</div>
+      <div class="reviewer-info">
+        <div class="reviewer-name">Conner Miller</div>
+        <div class="reviewer-meta">Verified Google Review · Fence Welding & Repair</div>
+      </div>
+      <div class="google-badge">Google ★ 5.0</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROCESS ────────────────────── -->
+<section id="process">
+  <div class="section-eyebrow reveal">How It Works</div>
+  <h2 class="section-title reveal">Simple.<br>Fast. Done Right.</h2>
+
+  <div class="process-steps">
+    <div class="process-step reveal">
+      <div class="step-num">01</div>
+      <div class="step-title">Contact Us</div>
+      <p class="step-desc">Reach out by phone, text, or the form below. Describe your project and we'll respond promptly to discuss your needs.</p>
+    </div>
+    <div class="process-step reveal" style="transition-delay:0.1s">
+      <div class="step-num">02</div>
+      <div class="step-title">Free Quote</div>
+      <p class="step-desc">We provide a clear, honest estimate — no hidden fees, no runaround. You'll know exactly what the job entails before we begin.</p>
+    </div>
+    <div class="process-step reveal" style="transition-delay:0.2s">
+      <div class="step-num">03</div>
+      <div class="step-title">We Come to You</div>
+      <p class="step-desc">We arrive on-site with all necessary equipment. No hauling required on your end. We work on your schedule.</p>
+    </div>
+    <div class="process-step reveal" style="transition-delay:0.3s">
+      <div class="step-num">04</div>
+      <div class="step-title">Job Complete</div>
+      <p class="step-desc">Work is done right the first time. We clean up, walk you through the results, and leave you with a finished product built to last.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ────────────────────── -->
+<section id="contact">
+  <div class="section-eyebrow reveal">Contact</div>
+  <h2 class="section-title reveal">Ready to Get<br>Started?</h2>
+
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.08 6.08l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.99 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <div class="contact-item-label">Phone / Text</div>
+          <div class="contact-item-value">(573) 555-0182</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke-linecap="round" stroke-linejoin="round"/><polyline points="22,6 12,13 2,6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <div class="contact-item-label">Email</div>
+          <div class="contact-item-value">info@ozarktradeservices.com</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="10" r="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <div class="contact-item-label">Service Area</div>
+          <div class="contact-item-value">Lake of the Ozarks & Surrounding Region</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-linejoin="round"/><polyline points="12,6 12,12 16,14" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <div class="contact-item-label">Availability</div>
+          <div class="contact-item-value">Mon – Sat · Call for Weekend Jobs</div>
+        </div>
+      </div>
+    </div>
+
+    <form class="contact-form reveal" style="transition-delay:0.15s" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="fname">First Name</label>
+          <input type="text" id="fname" placeholder="John" required>
+        </div>
+        <div class="form-group">
+          <label for="lname">Last Name</label>
+          <input type="text" id="lname" placeholder="Smith" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="(573) 000-0000" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="you@email.com">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="service">Service Needed</label>
+        <select id="service">
+          <option value="">Select a service...</option>
+          <option>Custom Welding</option>
+          <option>Welding Repair</option>
+          <option>Skid Steer Services</option>
+          <option>Residential Metalwork</option>
+          <option>Other / Not Sure</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">Project Details</label>
+        <textarea id="message" placeholder="Tell us about your project — location, scope, timeline..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">Send Request →</button>
+      <div id="form-success" style="display:none;color:var(--orange);font-size:0.9rem;margin-top:8px;font-weight:500;">✓ Message sent! We'll be in touch soon.</div>
+    </form>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div class="nav-logo-icon" style="width:28px;height:28px;">
+        <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#fff;"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      OZARK <span>&nbsp;TRADE SERVICES</span> LLC
+    </div>
+    <ul class="footer-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#sectors">Sectors</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="footer-copy">© 2025 Ozark Trade Services LLC. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  // ─── Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ─── Form submit (demo)
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('form-success').style.display = 'block';
+    e.target.querySelector('.form-submit').textContent = 'Sent ✓';
+    e.target.querySelector('.form-submit').style.background = '#2d6a2d';
+    e.target.querySelector('.form-submit').style.color = '#fff';
+  }
+
+  // ─── Nav scroll effect
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 60) {
+      nav.style.boxShadow = '0 4px 32px rgba(0,0,0,0.5)';
+    } else {
+      nav.style.boxShadow = 'none';
+    }
+  });
+</script>
+</body>
+</html>

@@ -54,20 +54,20 @@ export function CrewsTab({ crews, jobs, onAddCrew, onEditCrew, onDeleteCrew, pro
         <div style={{ fontFamily: "'Barlow Condensed'", fontSize: 18, fontWeight: 800, color: "#3d6fab", letterSpacing: ".04em", marginBottom: 14 }}>
           INVITE CREW LEADER
         </div>
-        <form onSubmit={handleInvite} style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+        <form onSubmit={handleInvite} style={{ display: "flex", flexDirection: "column", gap: 10 }}>
           <input
             type="email" value={inviteEmail} onChange={e => setInviteEmail(e.target.value)}
-            placeholder="crew@example.com" style={{ flex: "1 1 200px" }} required
+            placeholder="crew@example.com" required
           />
-          <select value={inviteCrewId} onChange={e => setInviteCrewId(e.target.value)} style={{ flex: "0 1 180px" }}>
+          <select value={inviteCrewId} onChange={e => setInviteCrewId(e.target.value)}>
             <option value="">— Assign crew (optional) —</option>
             {crews.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
           </select>
           <button type="submit" disabled={inviting} style={{
             background: "#3d6fab", border: "none", color: "#e8eef8",
-            borderRadius: 8, padding: "9px 20px", fontSize: 14, fontWeight: 800,
-            fontFamily: "'Barlow Condensed'", letterSpacing: ".05em", whiteSpace: "nowrap",
-            opacity: inviting ? 0.7 : 1,
+            borderRadius: 8, padding: "12px 20px", fontSize: 15, fontWeight: 800,
+            fontFamily: "'Barlow Condensed'", letterSpacing: ".05em",
+            opacity: inviting ? 0.7 : 1, width: "100%",
           }}>
             {inviting ? "SENDING…" : "SEND INVITE"}
           </button>
@@ -133,10 +133,10 @@ export function CrewsTab({ crews, jobs, onAddCrew, onEditCrew, onDeleteCrew, pro
       )}
 
       {/* Crew cards */}
-      <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 16 }}>
-        <button onClick={onAddCrew} style={{ background: "#3d6fab", border: "none", color: "#fff", borderRadius: 8, padding: "10px 22px", fontSize: 15, fontWeight: 800, fontFamily: "'Barlow Condensed'", letterSpacing: ".05em" }}>＋ NEW CREW</button>
+      <div style={{ marginBottom: 16 }}>
+        <button onClick={onAddCrew} style={{ background: "#3d6fab", border: "none", color: "#fff", borderRadius: 8, padding: "12px 22px", fontSize: 15, fontWeight: 800, fontFamily: "'Barlow Condensed'", letterSpacing: ".05em", width: "100%" }}>＋ NEW CREW</button>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 16 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(280px, 100%), 1fr))", gap: 16 }}>
         {crews.map(crew => {
           const crewJobs = jobs.filter(j => j.crew_id === crew.id);
           const totalPay = crewJobs.reduce((a, j) => a + crewPay(j, crew), 0);

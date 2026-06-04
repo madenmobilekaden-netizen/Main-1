@@ -41,18 +41,20 @@ export function JobModal({ job, crews, onSave, onClose }) {
   return (
     <div onClick={onClose} style={{
       position: "fixed", inset: 0, background: "rgba(0,0,0,.75)", zIndex: 100,
-      display: "flex", alignItems: "center", justifyContent: "center",
-      animation: "fadeOverlay .2s ease", padding: "16px",
+      display: "flex", alignItems: "flex-end", justifyContent: "center",
+      animation: "fadeOverlay .2s ease",
     }}>
       <div onClick={e => e.stopPropagation()} className="animate-in" style={{
-        background: "#0d1220", border: "1.5px solid #2a3a55", borderRadius: 14,
-        padding: 28, width: "min(640px, 100%)", maxHeight: "90vh", overflowY: "auto",
+        background: "#0d1220", border: "1.5px solid #2a3a55",
+        borderRadius: "14px 14px 0 0",
+        padding: "20px 16px", width: "min(640px, 100vw)", maxHeight: "95dvh", overflowY: "auto",
+        boxSizing: "border-box",
       }}>
         <div style={{ fontFamily: "'Barlow Condensed'", fontSize: 22, fontWeight: 800, color: "#3d6fab", marginBottom: 20, letterSpacing: ".02em" }}>
           {job ? "✏ EDIT JOB" : "＋ NEW JOB"}
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 14, marginBottom: 14 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(220px, 100%), 1fr))", gap: 14, marginBottom: 14 }}>
           <div style={{ gridColumn: "1/-1" }}>
             <Label>Job Name *</Label>
             <input value={form.name} onChange={e => set("name", e.target.value)} placeholder="e.g. Riverside Office Build" />
@@ -117,15 +119,15 @@ export function JobModal({ job, crews, onSave, onClose }) {
           }}>+ ADD SHEET SIZE</button>
         </div>
 
-        <div style={{ display: "flex", gap: 10, justifyContent: "flex-end", flexWrap: "wrap" }}>
+        <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
           <button onClick={onClose} style={{
             background: "transparent", border: "1.5px solid #2a3a55", color: "#6b80a0",
-            borderRadius: 8, padding: "9px 22px", fontSize: 15, letterSpacing: ".04em",
+            borderRadius: 8, padding: "12px 22px", fontSize: 15, letterSpacing: ".04em", flex: "1 1 120px",
           }}>CANCEL</button>
           <button onClick={handleSave} disabled={saving} style={{
             background: "#3d6fab", border: "none", color: "#e8eef8",
-            borderRadius: 8, padding: "9px 28px", fontSize: 15, fontWeight: 800, letterSpacing: ".04em",
-            opacity: saving ? 0.7 : 1,
+            borderRadius: 8, padding: "12px 28px", fontSize: 15, fontWeight: 800, letterSpacing: ".04em",
+            opacity: saving ? 0.7 : 1, flex: "2 1 180px",
           }}>
             {saving ? "SAVING…" : "SAVE JOB"}
           </button>

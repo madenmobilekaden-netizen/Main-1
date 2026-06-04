@@ -144,28 +144,32 @@ export default function OwnerDashboard() {
   return (
     <>
       <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: "#060810" }}>
-        {/* Header */}
-        <div style={{ background: "#0a0e1a", borderBottom: "1.5px solid #1e2a40", padding: "0 16px", display: "flex", alignItems: "center", gap: 16, height: 58, flexWrap: "wrap" }}>
-          <div style={{ fontFamily: "'Barlow Condensed'", fontSize: 22, fontWeight: 800, color: "#3d6fab", letterSpacing: ".06em", whiteSpace: "nowrap" }}>
-            🧱 HARRIS GROUP CRM
+        {/* Header — two-row on mobile */}
+        <div style={{ background: "#0a0e1a", borderBottom: "1.5px solid #1e2a40" }}>
+          {/* Top row: logo + sign out */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 16px" }}>
+            <div style={{ fontFamily: "'Barlow Condensed'", fontSize: 22, fontWeight: 800, color: "#3d6fab", letterSpacing: ".06em", whiteSpace: "nowrap" }}>
+              🧱 HARRIS GROUP CRM
+            </div>
+            <button onClick={signOut} style={{ background: "transparent", border: "1.5px solid #2a3a55", color: "#6b80a0", borderRadius: 8, padding: "6px 14px", fontSize: 13, fontFamily: "'Barlow Condensed'", flexShrink: 0 }}>SIGN OUT</button>
           </div>
-          <div style={{ display: "flex", gap: 2 }}>
+          {/* Bottom row: tabs */}
+          <div style={{ display: "flex", gap: 0, overflowX: "auto", padding: "0 8px" }}>
             {TABS.map(t => (
               <button key={t} onClick={() => setTab(t)} style={{
                 background: tab === t ? "#3d6fab18" : "transparent",
                 border: "none", borderBottom: tab === t ? "2px solid #3d6fab" : "2px solid transparent",
                 color: tab === t ? "#3d6fab" : "#6b80a0",
-                fontFamily: "'Barlow Condensed'", fontSize: 14, fontWeight: 700, letterSpacing: ".07em",
-                padding: "4px 14px", textTransform: "uppercase", cursor: "pointer",
+                fontFamily: "'Barlow Condensed'", fontSize: 15, fontWeight: 700, letterSpacing: ".07em",
+                padding: "10px 16px", textTransform: "uppercase", cursor: "pointer", whiteSpace: "nowrap", flexShrink: 0,
               }}>{t}</button>
             ))}
           </div>
-          <button onClick={signOut} style={{ marginLeft: "auto", background: "transparent", border: "1.5px solid #2a3a55", color: "#6b80a0", borderRadius: 8, padding: "6px 14px", fontSize: 13, fontFamily: "'Barlow Condensed'" }}>SIGN OUT</button>
         </div>
 
-        <div style={{ flex: 1, padding: "20px 16px", maxWidth: 1100, width: "100%", margin: "0 auto" }}>
-          {/* Stats */}
-          <div style={{ display: "flex", gap: 10, marginBottom: 20, flexWrap: "wrap" }}>
+        <div style={{ flex: 1, padding: "16px", maxWidth: 1100, width: "100%", margin: "0 auto", boxSizing: "border-box" }}>
+          {/* Stats — 2-col grid on mobile */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(160px, 100%), 1fr))", gap: 10, marginBottom: 20 }}>
             <StatCard label="Active Jobs" value={activeJobs.length} sub={`${jobs.length} total`} accent="#3d6fab" />
             <StatCard label="Total Revenue" value={`$${(totalRevenue/1000).toFixed(1)}k`} sub={`$${jobs.length > 0 ? (totalRevenue/totalSqft).toFixed(2) : "—"}/sqft avg`} accent="#3db882" />
             <StatCard label="Crew Pay Out" value={`$${(totalPay/1000).toFixed(1)}k`} sub={`$${jobs.length > 0 ? (totalPay/totalSqft).toFixed(2) : "—"}/sqft avg`} accent="#3d6fab" />
@@ -175,21 +179,23 @@ export default function OwnerDashboard() {
 
           {tab === "jobs" && (
             <>
-              {/* Filters */}
-              <div style={{ display: "flex", gap: 10, marginBottom: 16, flexWrap: "wrap", alignItems: "center" }}>
-                <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search jobs or clients…" style={{ width: 200 }} />
-                <select value={filterStage} onChange={e => setFilterStage(e.target.value)} style={{ width: 150 }}>
-                  <option value="All">All Stages</option>
-                  {STAGES.map(s => <option key={s}>{s}</option>)}
-                </select>
-                <select value={filterCrew} onChange={e => setFilterCrew(e.target.value)} style={{ width: 150 }}>
-                  <option value="All">All Crews</option>
-                  {crews.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
-                </select>
+              {/* Filters — stacked on mobile */}
+              <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 16 }}>
+                <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search jobs or clients…" />
+                <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                  <select value={filterStage} onChange={e => setFilterStage(e.target.value)} style={{ flex: "1 1 130px" }}>
+                    <option value="All">All Stages</option>
+                    {STAGES.map(s => <option key={s}>{s}</option>)}
+                  </select>
+                  <select value={filterCrew} onChange={e => setFilterCrew(e.target.value)} style={{ flex: "1 1 130px" }}>
+                    <option value="All">All Crews</option>
+                    {crews.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+                  </select>
+                </div>
                 <button onClick={() => setJobModal("new")} style={{
-                  marginLeft: "auto", background: "#3d6fab", border: "none", color: "#e8eef8",
-                  borderRadius: 8, padding: "10px 20px", fontSize: 15, fontWeight: 800,
-                  fontFamily: "'Barlow Condensed'", letterSpacing: ".05em", whiteSpace: "nowrap",
+                  background: "#3d6fab", border: "none", color: "#e8eef8",
+                  borderRadius: 8, padding: "12px 20px", fontSize: 16, fontWeight: 800,
+                  fontFamily: "'Barlow Condensed'", letterSpacing: ".05em", width: "100%",
                 }}>＋ NEW JOB</button>
               </div>
               {filtered.length === 0 ? (
@@ -197,7 +203,7 @@ export default function OwnerDashboard() {
                   No jobs found. {jobs.length === 0 ? "Create your first job!" : "Try adjusting filters."}
                 </div>
               ) : (
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 14 }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(300px, 100%), 1fr))", gap: 14 }}>
                   {filtered.map(job => <JobCard key={job.id} job={job} crews={crews} onClick={() => setDetailJob(job)} isOwner />)}
                 </div>
               )}

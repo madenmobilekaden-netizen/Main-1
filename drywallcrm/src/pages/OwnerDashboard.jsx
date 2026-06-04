@@ -147,7 +147,7 @@ export default function OwnerDashboard() {
         {/* Header */}
         <div style={{ background: "#0a0e1a", borderBottom: "1.5px solid #1e2a40", padding: "0 16px", display: "flex", alignItems: "center", gap: 16, height: 58, flexWrap: "wrap" }}>
           <div style={{ fontFamily: "'Barlow Condensed'", fontSize: 22, fontWeight: 800, color: "#3d6fab", letterSpacing: ".06em", whiteSpace: "nowrap" }}>
-            🧱 DRYWALL CRM
+            🧱 HARRIS GROUP CRM
           </div>
           <div style={{ display: "flex", gap: 2 }}>
             {TABS.map(t => (

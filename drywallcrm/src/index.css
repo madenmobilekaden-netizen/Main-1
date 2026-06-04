@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #0f1114;
+  color: #e8eaf0;
+  font-family: 'Barlow', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+input, select, textarea {
+  background: #11151a;
+  border: 1.5px solid #2a3040;
+  color: #e8eaf0;
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px;
+  border-radius: 6px;
+  padding: 8px 12px;
+  width: 100%;
+  outline: none;
+  transition: border-color .18s;
+}
+input:focus, select:focus, textarea:focus { border-color: #f5c518; }
+select option { background: #11151a; }
+
+button { cursor: pointer; font-family: 'Barlow Condensed', sans-serif; }
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #0f1114; }
+::-webkit-scrollbar-thumb { background: #363f50; border-radius: 3px; }
+
+@keyframes slideIn {
+  from { opacity:0; transform: translateY(16px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+.animate-in { animation: slideIn .25s ease both; }
+
+@keyframes fadeOverlay {
+  from { opacity:0; } to { opacity:1; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.spinner {
+  width: 32px; height: 32px;
+  border: 3px solid #2a3040;
+  border-top-color: #f5c518;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+}

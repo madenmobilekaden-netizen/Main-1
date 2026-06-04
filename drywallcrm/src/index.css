@@ -7,8 +7,8 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  background: #0f1114;
-  color: #e8eaf0;
+  background: #060810;
+  color: #e8eef8;
   font-family: 'Barlow', sans-serif;
   -webkit-font-smoothing: antialiased;
 }
@@ -19,9 +19,9 @@ body {
 }
 
 input, select, textarea {
-  background: #11151a;
-  border: 1.5px solid #2a3040;
-  color: #e8eaf0;
+  background: #0a0e1a;
+  border: 1.5px solid #1e2a40;
+  color: #e8eef8;
   font-family: 'Barlow', sans-serif;
   font-size: 14px;
   border-radius: 6px;
@@ -30,14 +30,14 @@ input, select, textarea {
   outline: none;
   transition: border-color .18s;
 }
-input:focus, select:focus, textarea:focus { border-color: #f5c518; }
-select option { background: #11151a; }
+input:focus, select:focus, textarea:focus { border-color: #3d6fab; }
+select option { background: #0a0e1a; }
 
 button { cursor: pointer; font-family: 'Barlow Condensed', sans-serif; }
 
 ::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: #0f1114; }
-::-webkit-scrollbar-thumb { background: #363f50; border-radius: 3px; }
+::-webkit-scrollbar-track { background: #060810; }
+::-webkit-scrollbar-thumb { background: #1e2a40; border-radius: 3px; }
 
 @keyframes slideIn {
   from { opacity:0; transform: translateY(16px); }
@@ -54,8 +54,8 @@ button { cursor: pointer; font-family: 'Barlow Condensed', sans-serif; }
 }
 .spinner {
   width: 32px; height: 32px;
-  border: 3px solid #2a3040;
-  border-top-color: #f5c518;
+  border: 3px solid #1e2a40;
+  border-top-color: #3d6fab;
   border-radius: 50%;
   animation: spin .7s linear infinite;
 }

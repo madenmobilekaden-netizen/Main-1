@@ -30,15 +30,15 @@ export function TaskModal({ task, crews, jobs, onSave, onClose }) {
     >
       <div
         onClick={e => e.stopPropagation()}
-        style={{ background: "#1e2329", border: "1.5px solid #363f50", borderRadius: 14, padding: 24, width: "100%", maxWidth: 480 }}
+        style={{ background: "#0d1220", border: "1.5px solid #2a3a55", borderRadius: 14, padding: 24, width: "100%", maxWidth: 480 }}
       >
-        <div style={{ fontFamily: "'Barlow Condensed'", fontSize: 20, fontWeight: 800, color: "#f5c518", marginBottom: 20, letterSpacing: ".06em" }}>
+        <div style={{ fontFamily: "'Barlow Condensed'", fontSize: 20, fontWeight: 800, color: "#3d6fab", marginBottom: 20, letterSpacing: ".06em" }}>
           {task ? "EDIT TASK" : "NEW TASK"}
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
           <div>
-            <label style={{ display: "block", fontFamily: "'Barlow Condensed'", fontSize: 12, color: "#7a8499", letterSpacing: ".06em", marginBottom: 6 }}>TITLE *</label>
+            <label style={{ display: "block", fontFamily: "'Barlow Condensed'", fontSize: 12, color: "#6b80a0", letterSpacing: ".06em", marginBottom: 6 }}>TITLE *</label>
             <input
               value={title}
               onChange={e => setTitle(e.target.value)}
@@ -48,7 +48,7 @@ export function TaskModal({ task, crews, jobs, onSave, onClose }) {
           </div>
 
           <div>
-            <label style={{ display: "block", fontFamily: "'Barlow Condensed'", fontSize: 12, color: "#7a8499", letterSpacing: ".06em", marginBottom: 6 }}>DESCRIPTION</label>
+            <label style={{ display: "block", fontFamily: "'Barlow Condensed'", fontSize: 12, color: "#6b80a0", letterSpacing: ".06em", marginBottom: 6 }}>DESCRIPTION</label>
             <textarea
               value={description}
               onChange={e => setDescription(e.target.value)}
@@ -59,7 +59,7 @@ export function TaskModal({ task, crews, jobs, onSave, onClose }) {
           </div>
 
           <div>
-            <label style={{ display: "block", fontFamily: "'Barlow Condensed'", fontSize: 12, color: "#7a8499", letterSpacing: ".06em", marginBottom: 6 }}>CREW *</label>
+            <label style={{ display: "block", fontFamily: "'Barlow Condensed'", fontSize: 12, color: "#6b80a0", letterSpacing: ".06em", marginBottom: 6 }}>CREW *</label>
             <select value={crewId} onChange={e => setCrewId(e.target.value)} style={{ width: "100%", boxSizing: "border-box" }}>
               <option value="">— Select Crew —</option>
               {crews.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
@@ -67,7 +67,7 @@ export function TaskModal({ task, crews, jobs, onSave, onClose }) {
           </div>
 
           <div>
-            <label style={{ display: "block", fontFamily: "'Barlow Condensed'", fontSize: 12, color: "#7a8499", letterSpacing: ".06em", marginBottom: 6 }}>JOB (OPTIONAL)</label>
+            <label style={{ display: "block", fontFamily: "'Barlow Condensed'", fontSize: 12, color: "#6b80a0", letterSpacing: ".06em", marginBottom: 6 }}>JOB (OPTIONAL)</label>
             <select value={jobId} onChange={e => setJobId(e.target.value)} style={{ width: "100%", boxSizing: "border-box" }}>
               <option value="">— No Job —</option>
               {jobs.map(j => <option key={j.id} value={j.id}>{j.name}</option>)}
@@ -77,10 +77,10 @@ export function TaskModal({ task, crews, jobs, onSave, onClose }) {
           {error && <div style={{ color: "#e05555", fontSize: 13, fontFamily: "'Barlow Condensed'" }}>{error}</div>}
 
           <div style={{ display: "flex", gap: 10, marginTop: 4 }}>
-            <button onClick={onClose} style={{ flex: 1, background: "transparent", border: "1.5px solid #363f50", color: "#7a8499", borderRadius: 10, padding: 14, fontSize: 15, fontFamily: "'Barlow Condensed'" }}>
+            <button onClick={onClose} style={{ flex: 1, background: "transparent", border: "1.5px solid #2a3a55", color: "#6b80a0", borderRadius: 10, padding: 14, fontSize: 15, fontFamily: "'Barlow Condensed'" }}>
               CANCEL
             </button>
-            <button onClick={handleSave} disabled={saving} style={{ flex: 2, background: "#f5c518", border: "none", color: "#111", borderRadius: 10, padding: 14, fontSize: 15, fontWeight: 800, fontFamily: "'Barlow Condensed'", letterSpacing: ".05em", opacity: saving ? 0.7 : 1 }}>
+            <button onClick={handleSave} disabled={saving} style={{ flex: 2, background: "#3d6fab", border: "none", color: "#e8eef8", borderRadius: 10, padding: 14, fontSize: 15, fontWeight: 800, fontFamily: "'Barlow Condensed'", letterSpacing: ".05em", opacity: saving ? 0.7 : 1 }}>
               {saving ? "SAVING…" : (task ? "SAVE CHANGES" : "CREATE TASK")}
             </button>
           </div>

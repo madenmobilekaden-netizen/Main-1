@@ -19,8 +19,8 @@ export function CrewModal({ crew, onSave, onClose }) {
 
   return (
     <div onClick={onClose} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,.75)", zIndex: 100, display: "flex", alignItems: "center", justifyContent: "center", animation: "fadeOverlay .2s ease", padding: 16 }}>
-      <div onClick={e => e.stopPropagation()} className="animate-in" style={{ background: "#1e2329", border: "1.5px solid #363f50", borderRadius: 14, padding: 28, width: "min(400px, 100%)" }}>
-        <div style={{ fontFamily: "'Barlow Condensed'", fontSize: 22, fontWeight: 800, color: "#e07b39", marginBottom: 20 }}>
+      <div onClick={e => e.stopPropagation()} className="animate-in" style={{ background: "#0d1220", border: "1.5px solid #2a3a55", borderRadius: 14, padding: 28, width: "min(400px, 100%)" }}>
+        <div style={{ fontFamily: "'Barlow Condensed'", fontSize: 22, fontWeight: 800, color: "#3d6fab", marginBottom: 20 }}>
           {crew ? "✏ EDIT CREW" : "＋ NEW CREW"}
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
@@ -29,8 +29,8 @@ export function CrewModal({ crew, onSave, onClose }) {
           <div><Label>Rate per Sq Ft ($) *</Label><input type="number" step="0.01" value={form.rate_per_sqft} onChange={e => set("rate_per_sqft", e.target.value)} placeholder="e.g. 0.45" /></div>
         </div>
         <div style={{ display: "flex", gap: 10, justifyContent: "flex-end", marginTop: 20 }}>
-          <button onClick={onClose} style={{ background: "transparent", border: "1.5px solid #363f50", color: "#7a8499", borderRadius: 8, padding: "9px 22px", fontSize: 15, letterSpacing: ".04em" }}>CANCEL</button>
-          <button onClick={handleSave} disabled={saving} style={{ background: "#e07b39", border: "none", color: "#fff", borderRadius: 8, padding: "9px 28px", fontSize: 15, fontWeight: 800, letterSpacing: ".04em", opacity: saving ? 0.7 : 1 }}>
+          <button onClick={onClose} style={{ background: "transparent", border: "1.5px solid #2a3a55", color: "#6b80a0", borderRadius: 8, padding: "9px 22px", fontSize: 15, letterSpacing: ".04em" }}>CANCEL</button>
+          <button onClick={handleSave} disabled={saving} style={{ background: "#3d6fab", border: "none", color: "#fff", borderRadius: 8, padding: "9px 28px", fontSize: 15, fontWeight: 800, letterSpacing: ".04em", opacity: saving ? 0.7 : 1 }}>
             {saving ? "SAVING…" : "SAVE CREW"}
           </button>
         </div>

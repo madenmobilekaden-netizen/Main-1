@@ -4,17 +4,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg:      "#0f1114",
-        surface: "#181c21",
-        card:    "#1e2329",
-        border:  "#2a3040",
-        border2: "#363f50",
-        yellow:  "#f5c518",
-        orange:  "#e07b39",
+        bg:      "#060810",
+        surface: "#0a0e1a",
+        card:    "#0d1220",
+        border:  "#1e2a40",
+        border2: "#2a3a55",
+        yellow:  "#3d6fab",
+        orange:  "#3d6fab",
         green:   "#3db882",
         red:     "#e05050",
-        blue:    "#4a90d9",
-        muted:   "#7a8499",
+        blue:    "#3d6fab",
+        muted:   "#6b80a0",
       },
       fontFamily: {
         head: ["'Barlow Condensed'", "sans-serif"],

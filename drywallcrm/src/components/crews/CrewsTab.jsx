@@ -50,8 +50,8 @@ export function CrewsTab({ crews, jobs, onAddCrew, onEditCrew, onDeleteCrew, pro
   return (
     <div>
       {/* Invite crew leader */}
-      <div style={{ background: "#1e2329", border: "1.5px solid #2a3040", borderRadius: 12, padding: 20, marginBottom: 24 }}>
-        <div style={{ fontFamily: "'Barlow Condensed'", fontSize: 18, fontWeight: 800, color: "#f5c518", letterSpacing: ".04em", marginBottom: 14 }}>
+      <div style={{ background: "#0d1220", border: "1.5px solid #1e2a40", borderRadius: 12, padding: 20, marginBottom: 24 }}>
+        <div style={{ fontFamily: "'Barlow Condensed'", fontSize: 18, fontWeight: 800, color: "#3d6fab", letterSpacing: ".04em", marginBottom: 14 }}>
           INVITE CREW LEADER
         </div>
         <form onSubmit={handleInvite} style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
@@ -64,7 +64,7 @@ export function CrewsTab({ crews, jobs, onAddCrew, onEditCrew, onDeleteCrew, pro
             {crews.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
           </select>
           <button type="submit" disabled={inviting} style={{
-            background: "#f5c518", border: "none", color: "#111",
+            background: "#3d6fab", border: "none", color: "#e8eef8",
             borderRadius: 8, padding: "9px 20px", fontSize: 14, fontWeight: 800,
             fontFamily: "'Barlow Condensed'", letterSpacing: ".05em", whiteSpace: "nowrap",
             opacity: inviting ? 0.7 : 1,
@@ -87,15 +87,15 @@ export function CrewsTab({ crews, jobs, onAddCrew, onEditCrew, onDeleteCrew, pro
       {/* Crew leader accounts */}
       {crewLeaders.length > 0 && (
         <div style={{ marginBottom: 24 }}>
-          <div style={{ fontFamily: "'Barlow Condensed'", fontSize: 16, fontWeight: 700, letterSpacing: ".06em", color: "#7a8499", marginBottom: 12 }}>CREW LEADER ACCOUNTS</div>
+          <div style={{ fontFamily: "'Barlow Condensed'", fontSize: 16, fontWeight: 700, letterSpacing: ".06em", color: "#6b80a0", marginBottom: 12 }}>CREW LEADER ACCOUNTS</div>
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
             {crewLeaders.map(p => {
               const assignedCrew = crews.find(c => c.id === p.crew_id);
               return (
-                <div key={p.id} style={{ background: "#1e2329", border: "1.5px solid #2a3040", borderRadius: 10, padding: "12px 16px", display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+                <div key={p.id} style={{ background: "#0d1220", border: "1.5px solid #1e2a40", borderRadius: 10, padding: "12px 16px", display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
                   <div style={{ flex: 1, minWidth: 160 }}>
                     <div style={{ fontSize: 14, fontWeight: 600 }}>{p.email}</div>
-                    <div style={{ fontSize: 12, color: "#7a8499", marginTop: 2 }}>{assignedCrew ? assignedCrew.name : "No crew assigned"}</div>
+                    <div style={{ fontSize: 12, color: "#6b80a0", marginTop: 2 }}>{assignedCrew ? assignedCrew.name : "No crew assigned"}</div>
                   </div>
                   <select
                     value={p.crew_id || ""}
@@ -134,7 +134,7 @@ export function CrewsTab({ crews, jobs, onAddCrew, onEditCrew, onDeleteCrew, pro
 
       {/* Crew cards */}
       <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 16 }}>
-        <button onClick={onAddCrew} style={{ background: "#e07b39", border: "none", color: "#fff", borderRadius: 8, padding: "10px 22px", fontSize: 15, fontWeight: 800, fontFamily: "'Barlow Condensed'", letterSpacing: ".05em" }}>＋ NEW CREW</button>
+        <button onClick={onAddCrew} style={{ background: "#3d6fab", border: "none", color: "#fff", borderRadius: 8, padding: "10px 22px", fontSize: 15, fontWeight: 800, fontFamily: "'Barlow Condensed'", letterSpacing: ".05em" }}>＋ NEW CREW</button>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 16 }}>
         {crews.map(crew => {
@@ -143,34 +143,34 @@ export function CrewsTab({ crews, jobs, onAddCrew, onEditCrew, onDeleteCrew, pro
           const totalSqft = crewJobs.reduce((a, j) => a + (j.sqft || 0), 0);
           const activeJobs = crewJobs.filter(j => j.stage !== "Complete");
           return (
-            <div key={crew.id} className="animate-in" style={{ background: "#1e2329", border: "1.5px solid #2a3040", borderRadius: 12, padding: 20 }}>
+            <div key={crew.id} className="animate-in" style={{ background: "#0d1220", border: "1.5px solid #1e2a40", borderRadius: 12, padding: 20 }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
                 <div>
                   <div style={{ fontFamily: "'Barlow Condensed'", fontSize: 20, fontWeight: 800 }}>{crew.name}</div>
-                  <div style={{ fontSize: 13, color: "#7a8499", marginTop: 2 }}>{crew.members} members · <span style={{ color: "#e07b39" }}>${crew.rate_per_sqft}/sqft</span></div>
+                  <div style={{ fontSize: 13, color: "#6b80a0", marginTop: 2 }}>{crew.members} members · <span style={{ color: "#3d6fab" }}>${crew.rate_per_sqft}/sqft</span></div>
                 </div>
                 <div style={{ display: "flex", gap: 6 }}>
-                  <button onClick={() => onEditCrew(crew)} style={{ background: "transparent", border: "1.5px solid #363f50", color: "#7a8499", borderRadius: 6, padding: "4px 10px", fontSize: 13, fontFamily: "'Barlow Condensed'" }}>EDIT</button>
+                  <button onClick={() => onEditCrew(crew)} style={{ background: "transparent", border: "1.5px solid #2a3a55", color: "#6b80a0", borderRadius: 6, padding: "4px 10px", fontSize: 13, fontFamily: "'Barlow Condensed'" }}>EDIT</button>
                   <button onClick={() => onDeleteCrew(crew.id)} style={{ background: "transparent", border: "1.5px solid #e0505044", color: "#e05050", borderRadius: 6, padding: "4px 10px", fontSize: 13, fontFamily: "'Barlow Condensed'" }}>✕</button>
                 </div>
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10, marginTop: 16 }}>
                 {[
-                  { label: "ACTIVE JOBS", value: activeJobs.length, color: "#4a90d9" },
+                  { label: "ACTIVE JOBS", value: activeJobs.length, color: "#3d6fab" },
                   { label: "TOTAL SQFT", value: totalSqft.toLocaleString(), color: null },
-                  { label: "TOTAL PAY", value: `$${totalPay.toLocaleString(undefined, { maximumFractionDigits: 0 })}`, color: "#e07b39" },
+                  { label: "TOTAL PAY", value: `$${totalPay.toLocaleString(undefined, { maximumFractionDigits: 0 })}`, color: "#3d6fab" },
                 ].map(({ label, value, color }) => (
-                  <div key={label} style={{ background: "#181c21", borderRadius: 8, padding: "10px 12px" }}>
-                    <div style={{ fontSize: 10, color: "#7a8499", fontFamily: "'Barlow Condensed'", letterSpacing: ".06em" }}>{label}</div>
-                    <div style={{ fontSize: 22, fontFamily: "'Barlow Condensed'", fontWeight: 800, color: color || "#e8eaf0" }}>{value}</div>
+                  <div key={label} style={{ background: "#0a0e1a", borderRadius: 8, padding: "10px 12px" }}>
+                    <div style={{ fontSize: 10, color: "#6b80a0", fontFamily: "'Barlow Condensed'", letterSpacing: ".06em" }}>{label}</div>
+                    <div style={{ fontSize: 22, fontFamily: "'Barlow Condensed'", fontWeight: 800, color: color || "#e8eef8" }}>{value}</div>
                   </div>
                 ))}
               </div>
               {crewJobs.length > 0 && (
                 <div style={{ marginTop: 12 }}>
-                  <div style={{ fontSize: 11, color: "#7a8499", fontFamily: "'Barlow Condensed'", letterSpacing: ".06em", marginBottom: 6 }}>ASSIGNED JOBS</div>
+                  <div style={{ fontSize: 11, color: "#6b80a0", fontFamily: "'Barlow Condensed'", letterSpacing: ".06em", marginBottom: 6 }}>ASSIGNED JOBS</div>
                   {crewJobs.map(j => (
-                    <div key={j.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 12, padding: "4px 0", borderBottom: "1px solid #2a3040" }}>
+                    <div key={j.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 12, padding: "4px 0", borderBottom: "1px solid #1e2a40" }}>
                       <span>{j.name}</span>
                       <StageBadge stage={j.stage} />
                     </div>

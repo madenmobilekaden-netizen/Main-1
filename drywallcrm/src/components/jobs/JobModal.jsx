@@ -45,10 +45,10 @@ export function JobModal({ job, crews, onSave, onClose }) {
       animation: "fadeOverlay .2s ease", padding: "16px",
     }}>
       <div onClick={e => e.stopPropagation()} className="animate-in" style={{
-        background: "#1e2329", border: "1.5px solid #363f50", borderRadius: 14,
+        background: "#0d1220", border: "1.5px solid #2a3a55", borderRadius: 14,
         padding: 28, width: "min(640px, 100%)", maxHeight: "90vh", overflowY: "auto",
       }}>
-        <div style={{ fontFamily: "'Barlow Condensed'", fontSize: 22, fontWeight: 800, color: "#f5c518", marginBottom: 20, letterSpacing: ".02em" }}>
+        <div style={{ fontFamily: "'Barlow Condensed'", fontSize: 22, fontWeight: 800, color: "#3d6fab", marginBottom: 20, letterSpacing: ".02em" }}>
           {job ? "✏ EDIT JOB" : "＋ NEW JOB"}
         </div>
 
@@ -92,10 +92,10 @@ export function JobModal({ job, crews, onSave, onClose }) {
           </div>
         </div>
 
-        <div style={{ background: "#181c21", borderRadius: 8, padding: 16, marginBottom: 16, border: "1px solid #2a3040" }}>
+        <div style={{ background: "#0a0e1a", borderRadius: 8, padding: 16, marginBottom: 16, border: "1px solid #1e2a40" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
             <div style={{ fontFamily: "'Barlow Condensed'", fontSize: 15, fontWeight: 700, letterSpacing: ".04em" }}>SHEET BREAKDOWN</div>
-            <span style={{ fontSize: 12, color: "#7a8499" }}>
+            <span style={{ fontSize: 12, color: "#6b80a0" }}>
               Coverage: <strong style={{ color: "#3db882" }}>{sheetSqft.toLocaleString()} sqft</strong>
             </span>
           </div>
@@ -106,24 +106,24 @@ export function JobModal({ job, crews, onSave, onClose }) {
               </select>
               <input type="number" value={s.qty} onChange={e => setSheet(i, "qty", e.target.value)} placeholder="Qty" />
               <button onClick={() => removeSheet(i)} style={{
-                background: "transparent", border: "1.5px solid #363f50", color: "#e05050",
+                background: "transparent", border: "1.5px solid #2a3a55", color: "#e05050",
                 borderRadius: 6, fontSize: 16, fontWeight: 700,
               }}>×</button>
             </div>
           ))}
           <button onClick={addSheet} style={{
-            background: "transparent", border: "1.5px dashed #363f50", color: "#7a8499",
+            background: "transparent", border: "1.5px dashed #2a3a55", color: "#6b80a0",
             borderRadius: 6, padding: "6px 14px", fontSize: 13, fontFamily: "'Barlow Condensed'", letterSpacing: ".04em", width: "100%",
           }}>+ ADD SHEET SIZE</button>
         </div>
 
         <div style={{ display: "flex", gap: 10, justifyContent: "flex-end", flexWrap: "wrap" }}>
           <button onClick={onClose} style={{
-            background: "transparent", border: "1.5px solid #363f50", color: "#7a8499",
+            background: "transparent", border: "1.5px solid #2a3a55", color: "#6b80a0",
             borderRadius: 8, padding: "9px 22px", fontSize: 15, letterSpacing: ".04em",
           }}>CANCEL</button>
           <button onClick={handleSave} disabled={saving} style={{
-            background: "#f5c518", border: "none", color: "#111",
+            background: "#3d6fab", border: "none", color: "#e8eef8",
             borderRadius: 8, padding: "9px 28px", fontSize: 15, fontWeight: 800, letterSpacing: ".04em",
             opacity: saving ? 0.7 : 1,
           }}>

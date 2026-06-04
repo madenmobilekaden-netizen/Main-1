@@ -196,13 +196,13 @@ export default function CrewLeaderDashboard() {
 
             {/* Stage buttons — large for job site */}
             <div style={{ fontSize: 12, color: "#6b80a0", fontFamily: "'Barlow Condensed'", letterSpacing: ".06em", marginBottom: 8 }}>UPDATE STAGE</div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 16 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(160px, 100%), 1fr))", gap: 8, marginBottom: 16 }}>
               {STAGES.map(s => {
                 const isCurrent = selected.stage === s;
                 const color = STAGE_COLORS[s];
                 return (
                   <button key={s} onClick={() => !isCurrent && setConfirmStage(s)} style={{
-                    padding: "14px 10px", borderRadius: 10, fontSize: 15, fontFamily: "'Barlow Condensed'", fontWeight: 700, letterSpacing: ".04em",
+                    padding: "16px 10px", borderRadius: 10, fontSize: 16, fontFamily: "'Barlow Condensed'", fontWeight: 700, letterSpacing: ".04em",
                     background: isCurrent ? color + "33" : "transparent",
                     border: `2px solid ${isCurrent ? color : "#1e2a40"}`,
                     color: isCurrent ? color : "#6b80a0",

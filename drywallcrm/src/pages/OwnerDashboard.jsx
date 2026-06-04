@@ -226,7 +226,7 @@ export default function OwnerDashboard() {
           {tab === "tasks" && (
             <>
               <div style={{ display: "flex", gap: 10, marginBottom: 16, alignItems: "center", flexWrap: "wrap" }}>
-                <select value={taskFilterCrew} onChange={e => setTaskFilterCrew(e.target.value)} style={{ width: 180 }}>
+                <select value={taskFilterCrew} onChange={e => setTaskFilterCrew(e.target.value)} style={{ width: "min(180px, 100%)" }}>
                   <option value="All">All Crews</option>
                   {crews.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
                 </select>

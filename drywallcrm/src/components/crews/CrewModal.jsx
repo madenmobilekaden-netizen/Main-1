@@ -28,9 +28,9 @@ export function CrewModal({ crew, onSave, onClose }) {
           <div><Label>Members</Label><input type="number" value={form.members} onChange={e => set("members", e.target.value)} placeholder="# of workers" /></div>
           <div><Label>Rate per Sq Ft ($) *</Label><input type="number" step="0.01" value={form.rate_per_sqft} onChange={e => set("rate_per_sqft", e.target.value)} placeholder="e.g. 0.45" /></div>
         </div>
-        <div style={{ display: "flex", gap: 10, justifyContent: "flex-end", marginTop: 20 }}>
-          <button onClick={onClose} style={{ background: "transparent", border: "1.5px solid #2a3a55", color: "#6b80a0", borderRadius: 8, padding: "9px 22px", fontSize: 15, letterSpacing: ".04em" }}>CANCEL</button>
-          <button onClick={handleSave} disabled={saving} style={{ background: "#3d6fab", border: "none", color: "#fff", borderRadius: 8, padding: "9px 28px", fontSize: 15, fontWeight: 800, letterSpacing: ".04em", opacity: saving ? 0.7 : 1 }}>
+        <div style={{ display: "flex", gap: 10, marginTop: 20, flexWrap: "wrap" }}>
+          <button onClick={onClose} style={{ flex: "1 1 120px", background: "transparent", border: "1.5px solid #2a3a55", color: "#6b80a0", borderRadius: 8, padding: "12px 22px", fontSize: 15, letterSpacing: ".04em" }}>CANCEL</button>
+          <button onClick={handleSave} disabled={saving} style={{ flex: "2 1 160px", background: "#3d6fab", border: "none", color: "#fff", borderRadius: 8, padding: "12px 28px", fontSize: 15, fontWeight: 800, letterSpacing: ".04em", opacity: saving ? 0.7 : 1 }}>
             {saving ? "SAVING…" : "SAVE CREW"}
           </button>
         </div>

@@ -100,7 +100,7 @@ export function CrewsTab({ crews, jobs, onAddCrew, onEditCrew, onDeleteCrew, pro
                   <select
                     value={p.crew_id || ""}
                     onChange={e => handleAssignCrew(p.id, e.target.value)}
-                    style={{ width: 160, fontSize: 13, padding: "6px 10px" }}
+                    style={{ width: "min(160px, 100%)", fontSize: 13, padding: "6px 10px" }}
                   >
                     <option value="">— No crew —</option>
                     {crews.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}

@@ -9,6 +9,8 @@ import { JobModal } from "../components/jobs/JobModal";
 import { CrewModal } from "../components/crews/CrewModal";
 import { CrewsTab } from "../components/crews/CrewsTab";
 import { ReportingTab } from "../components/reporting/ReportingTab";
+import { TaskModal } from "../components/tasks/TaskModal";
+import { TaskList } from "../components/tasks/TaskList";
 import { STAGES } from "../lib/constants";
 
 export default function OwnerDashboard() {
@@ -20,6 +22,9 @@ export default function OwnerDashboard() {
   const [filterStage, setFilterStage] = useState("All");
   const [filterCrew, setFilterCrew] = useState("All");
   const [search, setSearch] = useState("");
+  const [tasks, setTasks] = useState([]);
+  const [taskFilterCrew, setTaskFilterCrew] = useState("All");
+  const [taskModal, setTaskModal] = useState(false);
   const [jobModal, setJobModal] = useState(null);
   const [crewModal, setCrewModal] = useState(null);
   const [detailJob, setDetailJob] = useState(null);
@@ -29,14 +34,16 @@ export default function OwnerDashboard() {
 
   async function fetchAll() {
     setLoading(true);
-    const [{ data: jobsData }, { data: crewsData }, { data: profilesData }] = await Promise.all([
+    const [{ data: jobsData }, { data: crewsData }, { data: profilesData }, { data: tasksData }] = await Promise.all([
       supabase.from("jobs").select("*, sheets:job_sheets(*)").order("created_at", { ascending: false }),
       supabase.from("crews").select("*").order("name"),
       supabase.from("profiles").select("*").eq("role", "crew_leader"),
+      supabase.from("tasks").select("*, jobs(name)").order("created_at", { ascending: false }),
     ]);
     setJobs(jobsData || []);
     setCrews(crewsData || []);
     setProfiles(profilesData || []);
+    setTasks(tasksData || []);
     setLoading(false);
   }
 
@@ -111,6 +118,19 @@ export default function OwnerDashboard() {
     setCrews(cs => cs.filter(c => c.id !== id));
   }
 
+  async function saveTask(taskData) {
+    const { data, error } = await supabase.from("tasks").insert({ ...taskData, created_by: profile.id }).select("*, jobs(name)").single();
+    if (error) { console.error("Error creating task:", error); return; }
+    setTasks(ts => [data, ...ts]);
+    setTaskModal(false);
+  }
+
+  async function deleteTask(id) {
+    const { error } = await supabase.from("tasks").delete().eq("id", id);
+    if (error) { console.error("Error deleting task:", error); return; }
+    setTasks(ts => ts.filter(t => t.id !== id));
+  }
+
   if (loading) {
     return (
       <div style={{ minHeight: "100vh", background: "#0f1114", display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -119,7 +139,7 @@ export default function OwnerDashboard() {
     );
   }
 
-  const TABS = ["jobs","crews","reporting"];
+  const TABS = ["jobs","crews","reporting","tasks"];
 
   return (
     <>
@@ -196,6 +216,23 @@ export default function OwnerDashboard() {
           )}
 
           {tab === "reporting" && <ReportingTab jobs={jobs} crews={crews} />}
+
+          {tab === "tasks" && (
+            <>
+              <div style={{ display: "flex", gap: 10, marginBottom: 16, alignItems: "center", flexWrap: "wrap" }}>
+                <select value={taskFilterCrew} onChange={e => setTaskFilterCrew(e.target.value)} style={{ width: 180 }}>
+                  <option value="All">All Crews</option>
+                  {crews.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+                </select>
+              </div>
+              <TaskList
+                tasks={taskFilterCrew === "All" ? tasks : tasks.filter(t => t.crew_id === taskFilterCrew)}
+                isOwner
+                onDelete={deleteTask}
+                onAdd={() => setTaskModal(true)}
+              />
+            </>
+          )}
         </div>
       </div>
 
@@ -213,6 +250,15 @@ export default function OwnerDashboard() {
           crew={crewModal === "new" ? null : crewModal}
           onSave={saveCrew}
           onClose={() => setCrewModal(null)}
+        />
+      )}
+      {taskModal && (
+        <TaskModal
+          task={null}
+          crews={crews}
+          jobs={jobs}
+          onSave={saveTask}
+          onClose={() => setTaskModal(false)}
         />
       )}
       {detailJob && (

@@ -8,23 +8,31 @@ import { PhotoGallery } from "../components/photos/PhotoGallery";
 export default function CrewLeaderDashboard() {
   const { profile, signOut } = useAuth();
   const [jobs, setJobs] = useState([]);
+  const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState(null);
   const [confirmStage, setConfirmStage] = useState(null);
   const [updating, setUpdating] = useState(false);
 
-  useEffect(() => { fetchJobs(); }, [profile]);
+  useEffect(() => { fetchAll(); }, [profile]);
 
-  async function fetchJobs() {
+  async function fetchAll() {
     if (!profile?.crew_id) { setLoading(false); return; }
     setLoading(true);
-    const { data } = await supabase
-      .from("jobs")
-      .select("*, sheets:job_sheets(*)")
-      .eq("crew_id", profile.crew_id)
-      .order("created_at", { ascending: false });
-    setJobs(data || []);
+    const [{ data: jobsData }, { data: tasksData }] = await Promise.all([
+      supabase.from("jobs").select("*, sheets:job_sheets(*)").eq("crew_id", profile.crew_id).order("created_at", { ascending: false }),
+      supabase.from("tasks").select("*, jobs(name)").eq("crew_id", profile.crew_id).order("created_at", { ascending: false }),
+    ]);
+    setJobs(jobsData || []);
+    setTasks(tasksData || []);
     setLoading(false);
+  }
+
+  async function completeTask(taskId) {
+    const now = new Date().toISOString();
+    const { error } = await supabase.from("tasks").update({ completed: true, completed_at: now, completed_by: profile.id }).eq("id", taskId);
+    if (error) { console.error("Error completing task:", error); return; }
+    setTasks(ts => ts.map(t => t.id === taskId ? { ...t, completed: true, completed_at: now, completed_by: profile.id } : t));
   }
 
   async function changeStage(jobId, newStage) {
@@ -71,11 +79,72 @@ export default function CrewLeaderDashboard() {
     <div style={{ minHeight: "100vh", background: "#0f1114" }}>
       {/* Header */}
       <div style={{ background: "#181c21", borderBottom: "1.5px solid #2a3040", padding: "0 16px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 56 }}>
-        <div style={{ fontFamily: "'Barlow Condensed'", fontSize: 20, fontWeight: 800, color: "#f5c518", letterSpacing: ".06em" }}>🧱 MY JOBS</div>
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <div style={{ fontFamily: "'Barlow Condensed'", fontSize: 20, fontWeight: 800, color: "#f5c518", letterSpacing: ".06em" }}>🧱 MY JOBS</div>
+          {tasks.filter(t => !t.completed).length > 0 && (
+            <div style={{ background: "#f5c518", color: "#111", borderRadius: 20, padding: "2px 10px", fontSize: 12, fontWeight: 800, fontFamily: "'Barlow Condensed'", letterSpacing: ".05em" }}>
+              {tasks.filter(t => !t.completed).length} TASK{tasks.filter(t => !t.completed).length !== 1 ? "S" : ""}
+            </div>
+          )}
+        </div>
         <button onClick={signOut} style={{ background: "transparent", border: "1.5px solid #363f50", color: "#7a8499", borderRadius: 8, padding: "6px 14px", fontSize: 13, fontFamily: "'Barlow Condensed'" }}>SIGN OUT</button>
       </div>
 
       <div style={{ padding: "16px", maxWidth: 600, margin: "0 auto" }}>
+        {/* Tasks Section */}
+        {tasks.length > 0 && (
+          <div style={{ marginBottom: 24 }}>
+            <div style={{ fontFamily: "'Barlow Condensed'", fontSize: 14, fontWeight: 700, color: "#7a8499", letterSpacing: ".08em", marginBottom: 10 }}>MY TASKS</div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              {[...tasks.filter(t => !t.completed), ...tasks.filter(t => t.completed)].map(task => (
+                <div key={task.id} style={{
+                  background: "#1e2329",
+                  border: `1.5px solid ${task.completed ? "#2a3040" : "#363f50"}`,
+                  borderRadius: 12,
+                  padding: 16,
+                  opacity: task.completed ? 0.6 : 1,
+                }}>
+                  <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
+                        {task.completed && <span style={{ color: "#3db882", fontSize: 16 }}>✓</span>}
+                        <div style={{
+                          fontFamily: "'Barlow Condensed'", fontSize: 18, fontWeight: 700,
+                          textDecoration: task.completed ? "line-through" : "none",
+                          color: task.completed ? "#7a8499" : "#fff",
+                        }}>{task.title}</div>
+                      </div>
+                      {task.description && (
+                        <div style={{ fontSize: 13, color: "#7a8499", marginBottom: 6, lineHeight: 1.4 }}>{task.description}</div>
+                      )}
+                      {task.jobs?.name && (
+                        <div style={{ fontSize: 11, color: "#4a90d9", fontFamily: "'Barlow Condensed'", letterSpacing: ".04em" }}>JOB: {task.jobs.name}</div>
+                      )}
+                      {task.completed && task.completed_at && (
+                        <div style={{ fontSize: 11, color: "#3db882", fontFamily: "'Barlow Condensed'", marginTop: 4 }}>
+                          DONE {new Date(task.completed_at).toLocaleDateString()}
+                        </div>
+                      )}
+                    </div>
+                    {!task.completed && (
+                      <button
+                        onClick={() => completeTask(task.id)}
+                        style={{
+                          background: "#3db882", border: "none", color: "#fff", borderRadius: 10,
+                          padding: "14px 18px", fontSize: 15, fontWeight: 800, fontFamily: "'Barlow Condensed'",
+                          letterSpacing: ".04em", cursor: "pointer", whiteSpace: "nowrap", flexShrink: 0,
+                        }}
+                      >
+                        ✓ MARK DONE
+                      </button>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {jobs.length === 0 ? (
           <div style={{ textAlign: "center", color: "#7a8499", padding: "60px 0", fontFamily: "'Barlow Condensed'", fontSize: 18 }}>No jobs assigned to your crew.</div>
         ) : (

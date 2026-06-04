@@ -67,7 +67,7 @@ export function ReportingTab({ jobs, crews }) {
       </div>
 
       {/* Monthly stats */}
-      <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 28 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(160px, 100%), 1fr))", gap: 12, marginBottom: 28 }}>
         <StatCard label="Jobs This Month" value={thisMonth.length} sub={`${completedThisMonth.length} completed`} accent="#3d6fab" />
         <StatCard label="Month Revenue" value={`$${(monthRevenue/1000).toFixed(1)}k`} sub={monthRevenue > 0 ? `${Math.round((monthMargin/monthRevenue)*100)}% margin` : ""} accent="#3db882" />
         <StatCard label="Month Crew Pay" value={`$${(monthPay/1000).toFixed(1)}k`} accent="#3d6fab" />
@@ -76,7 +76,7 @@ export function ReportingTab({ jobs, crews }) {
 
       {/* All-time stats */}
       <div style={{ fontFamily: "'Barlow Condensed'", fontSize: 16, fontWeight: 700, color: "#6b80a0", letterSpacing: ".06em", marginBottom: 12 }}>ALL TIME</div>
-      <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 28 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(160px, 100%), 1fr))", gap: 12, marginBottom: 28 }}>
         <StatCard label="Total Jobs" value={jobs.length} sub={`${completed.length} completed`} accent="#3d6fab" />
         <StatCard label="Total Revenue" value={`$${(totalRevenue/1000).toFixed(1)}k`} accent="#3db882" />
         <StatCard label="Total Crew Pay" value={`$${(totalPay/1000).toFixed(1)}k`} accent="#3d6fab" />

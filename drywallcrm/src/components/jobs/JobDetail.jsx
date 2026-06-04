@@ -26,12 +26,13 @@ export function JobDetail({ job, crews, onEdit, onDelete, onStageChange, onClose
   return (
     <div onClick={onClose} style={{
       position: "fixed", inset: 0, background: "rgba(0,0,0,.7)", zIndex: 100,
-      display: "flex", alignItems: "flex-start", justifyContent: "flex-end",
+      display: "flex", alignItems: "stretch", justifyContent: "flex-end",
       animation: "fadeOverlay .2s ease",
     }}>
       <div onClick={e => e.stopPropagation()} className="animate-in" style={{
         background: "#0d1220", borderLeft: "1.5px solid #2a3a55",
-        width: "min(520px, 100vw)", height: "100vh", overflowY: "auto", padding: 24,
+        width: "min(520px, 100vw)", height: "100dvh", overflowY: "auto", padding: "16px",
+        boxSizing: "border-box", maxWidth: "100vw",
       }}>
         {/* Header */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 4 }}>
@@ -76,7 +77,7 @@ export function JobDetail({ job, crews, onEdit, onDelete, onStageChange, onClose
 
         {/* Financials (owner only) */}
         {isOwner && (
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginTop: 20 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(200px, 100%), 1fr))", gap: 10, marginTop: 20 }}>
             <div style={{ background: "#0a0e1a", borderRadius: 8, padding: 14, border: "1px solid #1e2a40" }}>
               <div style={{ fontSize: 11, color: "#6b80a0", fontFamily: "'Barlow Condensed'", letterSpacing: ".06em" }}>JOB REVENUE</div>
               <div style={{ fontSize: 26, fontFamily: "'Barlow Condensed'", fontWeight: 800, color: "#3db882" }}>${revenue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>

@@ -1,14 +1,14 @@
 export const STAGES = ["Quoted","Scheduled","Framing","Hanging","Taping","Finishing","Inspection","Complete"];
 
 export const STAGE_COLORS = {
-  Quoted:     "#7a8499",
-  Scheduled:  "#4a90d9",
-  Framing:    "#e07b39",
-  Hanging:    "#d4a017",
-  Taping:     "#c47dd4",
+  Quoted:     "#6b80a0",
+  Scheduled:  "#3d6fab",
+  Framing:    "#3d6fab",
+  Hanging:    "#3d6fab",
+  Taping:     "#5a7fc4",
   Finishing:  "#3db882",
   Inspection: "#e05050",
-  Complete:   "#f5c518",
+  Complete:   "#3d6fab",
 };
 
 export const SHEET_SIZES = ["4×8 (32 sqft)","4×9 (36 sqft)","4×10 (40 sqft)","4×12 (48 sqft)"];

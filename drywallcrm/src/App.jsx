@@ -8,7 +8,7 @@ function AppInner() {
 
   if (loading) {
     return (
-      <div style={{ minHeight: "100vh", background: "#0f1114", display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <div style={{ minHeight: "100vh", background: "#060810", display: "flex", alignItems: "center", justifyContent: "center" }}>
         <div className="spinner" />
       </div>
     );
@@ -19,7 +19,7 @@ function AppInner() {
   // Profile might still be loading after session is set
   if (!profile) {
     return (
-      <div style={{ minHeight: "100vh", background: "#0f1114", display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <div style={{ minHeight: "100vh", background: "#060810", display: "flex", alignItems: "center", justifyContent: "center" }}>
         <div className="spinner" />
       </div>
     );
@@ -30,7 +30,7 @@ function AppInner() {
 
   // Unknown role
   return (
-    <div style={{ minHeight: "100vh", background: "#0f1114", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 16 }}>
+    <div style={{ minHeight: "100vh", background: "#060810", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 16 }}>
       <div style={{ color: "#e05050", fontFamily: "'Barlow Condensed'", fontSize: 20 }}>Account not configured. Contact your admin.</div>
     </div>
   );

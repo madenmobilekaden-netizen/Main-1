@@ -54,11 +54,11 @@ export function PhotoGallery({ jobId, isOwner }) {
   }
 
   return (
-    <div style={{ marginTop: 18, background: "#181c21", borderRadius: 8, padding: 14, border: "1px solid #2a3040" }}>
+    <div style={{ marginTop: 18, background: "#0a0e1a", borderRadius: 8, padding: 14, border: "1px solid #1e2a40" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
         <div style={{ fontFamily: "'Barlow Condensed'", fontSize: 13, fontWeight: 700, letterSpacing: ".06em" }}>PHOTOS</div>
         <label style={{
-          background: "#f5c518", color: "#111", borderRadius: 6, padding: "5px 14px",
+          background: "#3d6fab", color: "#111", borderRadius: 6, padding: "5px 14px",
           fontSize: 13, fontWeight: 800, fontFamily: "'Barlow Condensed'", letterSpacing: ".04em",
           cursor: uploading ? "not-allowed" : "pointer", opacity: uploading ? 0.7 : 1,
         }}>
@@ -76,7 +76,7 @@ export function PhotoGallery({ jobId, isOwner }) {
       </div>
       {error && <div style={{ fontSize: 12, color: "#e05050", marginBottom: 8 }}>{error}</div>}
       {photos.length === 0 ? (
-        <div style={{ fontSize: 12, color: "#7a8499" }}>No photos yet. Tap "Add Photo" to upload from your camera or library.</div>
+        <div style={{ fontSize: 12, color: "#6b80a0" }}>No photos yet. Tap "Add Photo" to upload from your camera or library.</div>
       ) : (
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(80px, 1fr))", gap: 6 }}>
           {photos.map(p => (
@@ -96,7 +96,7 @@ export function PhotoGallery({ jobId, isOwner }) {
         }}>
           <img src={lightbox.url} alt="" style={{ maxWidth: "100%", maxHeight: "80vh", borderRadius: 10, objectFit: "contain" }} onClick={e => e.stopPropagation()} />
           <div style={{ display: "flex", gap: 12, marginTop: 16 }}>
-            <button onClick={() => setLightbox(null)} style={{ background: "#363f50", border: "none", color: "#e8eaf0", borderRadius: 8, padding: "8px 20px", fontFamily: "'Barlow Condensed'", fontSize: 14, fontWeight: 700 }}>CLOSE</button>
+            <button onClick={() => setLightbox(null)} style={{ background: "#2a3a55", border: "none", color: "#e8eef8", borderRadius: 8, padding: "8px 20px", fontFamily: "'Barlow Condensed'", fontSize: 14, fontWeight: 700 }}>CLOSE</button>
             {isOwner && (
               <button onClick={() => { handleDelete(lightbox); setLightbox(null); }} style={{ background: "#e0505022", border: "1.5px solid #e0505055", color: "#e05050", borderRadius: 8, padding: "8px 20px", fontFamily: "'Barlow Condensed'", fontSize: 14, fontWeight: 700 }}>DELETE</button>
             )}

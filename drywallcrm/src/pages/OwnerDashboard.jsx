@@ -133,7 +133,7 @@ export default function OwnerDashboard() {
 
   if (loading) {
     return (
-      <div style={{ minHeight: "100vh", background: "#0f1114", display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <div style={{ minHeight: "100vh", background: "#060810", display: "flex", alignItems: "center", justifyContent: "center" }}>
         <div className="spinner" />
       </div>
     );
@@ -143,33 +143,33 @@ export default function OwnerDashboard() {
 
   return (
     <>
-      <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: "#0f1114" }}>
+      <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: "#060810" }}>
         {/* Header */}
-        <div style={{ background: "#181c21", borderBottom: "1.5px solid #2a3040", padding: "0 16px", display: "flex", alignItems: "center", gap: 16, height: 58, flexWrap: "wrap" }}>
-          <div style={{ fontFamily: "'Barlow Condensed'", fontSize: 22, fontWeight: 800, color: "#f5c518", letterSpacing: ".06em", whiteSpace: "nowrap" }}>
+        <div style={{ background: "#0a0e1a", borderBottom: "1.5px solid #1e2a40", padding: "0 16px", display: "flex", alignItems: "center", gap: 16, height: 58, flexWrap: "wrap" }}>
+          <div style={{ fontFamily: "'Barlow Condensed'", fontSize: 22, fontWeight: 800, color: "#3d6fab", letterSpacing: ".06em", whiteSpace: "nowrap" }}>
             🧱 DRYWALL CRM
           </div>
           <div style={{ display: "flex", gap: 2 }}>
             {TABS.map(t => (
               <button key={t} onClick={() => setTab(t)} style={{
-                background: tab === t ? "#f5c51818" : "transparent",
-                border: "none", borderBottom: tab === t ? "2px solid #f5c518" : "2px solid transparent",
-                color: tab === t ? "#f5c518" : "#7a8499",
+                background: tab === t ? "#3d6fab18" : "transparent",
+                border: "none", borderBottom: tab === t ? "2px solid #3d6fab" : "2px solid transparent",
+                color: tab === t ? "#3d6fab" : "#6b80a0",
                 fontFamily: "'Barlow Condensed'", fontSize: 14, fontWeight: 700, letterSpacing: ".07em",
                 padding: "4px 14px", textTransform: "uppercase", cursor: "pointer",
               }}>{t}</button>
             ))}
           </div>
-          <button onClick={signOut} style={{ marginLeft: "auto", background: "transparent", border: "1.5px solid #363f50", color: "#7a8499", borderRadius: 8, padding: "6px 14px", fontSize: 13, fontFamily: "'Barlow Condensed'" }}>SIGN OUT</button>
+          <button onClick={signOut} style={{ marginLeft: "auto", background: "transparent", border: "1.5px solid #2a3a55", color: "#6b80a0", borderRadius: 8, padding: "6px 14px", fontSize: 13, fontFamily: "'Barlow Condensed'" }}>SIGN OUT</button>
         </div>
 
         <div style={{ flex: 1, padding: "20px 16px", maxWidth: 1100, width: "100%", margin: "0 auto" }}>
           {/* Stats */}
           <div style={{ display: "flex", gap: 10, marginBottom: 20, flexWrap: "wrap" }}>
-            <StatCard label="Active Jobs" value={activeJobs.length} sub={`${jobs.length} total`} accent="#4a90d9" />
+            <StatCard label="Active Jobs" value={activeJobs.length} sub={`${jobs.length} total`} accent="#3d6fab" />
             <StatCard label="Total Revenue" value={`$${(totalRevenue/1000).toFixed(1)}k`} sub={`$${jobs.length > 0 ? (totalRevenue/totalSqft).toFixed(2) : "—"}/sqft avg`} accent="#3db882" />
-            <StatCard label="Crew Pay Out" value={`$${(totalPay/1000).toFixed(1)}k`} sub={`$${jobs.length > 0 ? (totalPay/totalSqft).toFixed(2) : "—"}/sqft avg`} accent="#e07b39" />
-            <StatCard label="Net Margin" value={`$${((totalRevenue-totalPay)/1000).toFixed(1)}k`} sub={totalRevenue > 0 ? `${Math.round(((totalRevenue-totalPay)/totalRevenue)*100)}% margin` : ""} accent="#f5c518" />
+            <StatCard label="Crew Pay Out" value={`$${(totalPay/1000).toFixed(1)}k`} sub={`$${jobs.length > 0 ? (totalPay/totalSqft).toFixed(2) : "—"}/sqft avg`} accent="#3d6fab" />
+            <StatCard label="Net Margin" value={`$${((totalRevenue-totalPay)/1000).toFixed(1)}k`} sub={totalRevenue > 0 ? `${Math.round(((totalRevenue-totalPay)/totalRevenue)*100)}% margin` : ""} accent="#3d6fab" />
             <StatCard label="Total Sq Ft" value={totalSqft.toLocaleString()} sub="across all jobs" />
           </div>
 
@@ -187,13 +187,13 @@ export default function OwnerDashboard() {
                   {crews.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
                 </select>
                 <button onClick={() => setJobModal("new")} style={{
-                  marginLeft: "auto", background: "#f5c518", border: "none", color: "#111",
+                  marginLeft: "auto", background: "#3d6fab", border: "none", color: "#e8eef8",
                   borderRadius: 8, padding: "10px 20px", fontSize: 15, fontWeight: 800,
                   fontFamily: "'Barlow Condensed'", letterSpacing: ".05em", whiteSpace: "nowrap",
                 }}>＋ NEW JOB</button>
               </div>
               {filtered.length === 0 ? (
-                <div style={{ textAlign: "center", color: "#7a8499", padding: "60px 0", fontFamily: "'Barlow Condensed'", fontSize: 18 }}>
+                <div style={{ textAlign: "center", color: "#6b80a0", padding: "60px 0", fontFamily: "'Barlow Condensed'", fontSize: 18 }}>
                   No jobs found. {jobs.length === 0 ? "Create your first job!" : "Try adjusting filters."}
                 </div>
               ) : (

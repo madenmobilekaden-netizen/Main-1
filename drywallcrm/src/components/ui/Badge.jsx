@@ -1,7 +1,7 @@
 import { STAGE_COLORS } from "../../lib/constants";
 
 export function StageBadge({ stage }) {
-  const color = STAGE_COLORS[stage] || "#7a8499";
+  const color = STAGE_COLORS[stage] || "#6b80a0";
   return (
     <span style={{
       display: "inline-block", padding: "2px 10px", borderRadius: 99,

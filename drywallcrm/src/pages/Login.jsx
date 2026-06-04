@@ -28,7 +28,7 @@ export default function Login() {
       }}>
         <div style={{ textAlign: "center", marginBottom: 28 }}>
           <div style={{ fontSize: 36, fontFamily: "'Barlow Condensed'", fontWeight: 800, color: "#3d6fab", letterSpacing: ".06em" }}>
-            🧱 DRYWALL CRM
+            🧱 HARRIS GROUP CRM
           </div>
           <div style={{ fontSize: 13, color: "#6b80a0", marginTop: 6 }}>Sign in to your account</div>
         </div>
